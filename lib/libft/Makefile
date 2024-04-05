@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aranger <aranger@student.42.fr>            +#+  +:+       +#+         #
+#    By: nledent <nledent@42angouleme.fr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/07 11:13:31 by aranger           #+#    #+#              #
-#    Updated: 2024/03/20 17:31:28 by aranger          ###   ########.fr        #
+#    Updated: 2024/04/02 16:58:47 by nledent          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,7 +76,7 @@ OBJS		= $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 D_OBJS		= mkdir -p $(@D)
 
 CC 			= cc
-CFLAGS 		= -Wall -Wextra -Werror
+CFLAGS 		= -Wall -Wextra -Werror -g
 NAME 		= libft.a
 
 RM 			= rm -f
