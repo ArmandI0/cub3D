@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nledent <nledent@42angouleme.fr>           +#+  +:+       +#+        */
+/*   By: nledent <nledent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 17:55:29 by nledent           #+#    #+#             */
-/*   Updated: 2024/04/07 19:14:40 by nledent          ###   ########.fr       */
+/*   Updated: 2024/04/07 22:02:46 by nledent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,4 +84,7 @@ void	map_file_parsing(t_params *game, const char *filepath)
 		print_err_free_exit(game, error);
 	if (map_to_tab(game, game->head_list_lines) == FALSE)
 		print_err_free_exit(game, ER_EXTRACTION_MAP);
+	error = check_walls(game);
+	if (error != 0)
+		print_err_free_exit(game, error);
 }

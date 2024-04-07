@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nledent <nledent@42angouleme.fr>           +#+  +:+       +#+        */
+/*   By: nledent <nledent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 17:56:50 by nledent           #+#    #+#             */
-/*   Updated: 2024/04/07 19:14:26 by nledent          ###   ########.fr       */
+/*   Updated: 2024/04/07 21:50:04 by nledent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	print_map_tab(char **map)
 	i = 0;
 	while (map[i] != NULL)
 	{
-		ft_printf_fd(1, "%s", map[i]);
+		ft_printf_fd(1, "%s\n", map[i]);
 		i++;
 	}
 }

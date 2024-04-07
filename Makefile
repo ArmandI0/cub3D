@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nledent <nledent@42angouleme.fr>           +#+  +:+       +#+         #
+#    By: nledent <nledent@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/31 17:54:43 by nledent           #+#    #+#              #
-#    Updated: 2024/04/07 17:48:13 by nledent          ###   ########.fr        #
+#    Updated: 2024/04/07 22:03:43 by nledent          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ SRCS			= 	\
 					map_parsing/extract_map.c \
 					map_parsing/rgb_to_int.c \
 					map_parsing/map_to_tab.c \
+					map_parsing/check_walls.c \
 					game/main.c \
 					utils/check_args.c \
 					utils/print_errors.c \

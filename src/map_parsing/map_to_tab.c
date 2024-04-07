@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_to_tab.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nledent <nledent@42angouleme.fr>           +#+  +:+       +#+        */
+/*   By: nledent <nledent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 17:55:29 by nledent           #+#    #+#             */
-/*   Updated: 2024/04/07 19:15:06 by nledent          ###   ########.fr       */
+/*   Updated: 2024/04/07 22:01:27 by nledent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,18 @@ static int	get_len_max(t_list *head)
 
 static t_bool	line_to_tab(char **map, t_list *line, int id_line, int sizemax)
 {
+	char	*endline;
+
 	map[id_line] = ft_calloc(sizemax + 1, sizeof(char));
 	if (map[id_line] == NULL)
 		return (FALSE);
+	ft_memset(map[id_line], ' ', sizemax);
 	ft_strlcpy(map[id_line], line->content, sizemax + 1);
+	if ((int)ft_strlen(line->content) < sizemax)
+		*(ft_strchr(map[id_line], '\0')) = ' ';
+	endline = ft_strchr(map[id_line], '\n');
+	if (endline)
+		*endline = ' ';
 	return (TRUE);
 }
 
@@ -68,7 +76,8 @@ t_bool	map_to_tab(t_params *game, t_list *head)
 	int		nb_lines;
 	int		id_line;
 	
-	line = 0;
+	id_line = 0;
+	line = head;
 	nb_lines = get_nb_lines(head);
 	size_max_line = get_len_max(head);
 	game->map = ft_calloc(nb_lines + 1, sizeof(char *));
@@ -80,6 +89,7 @@ t_bool	map_to_tab(t_params *game, t_list *head)
 			return (FALSE);
 		id_line ++;
 		line = line->next;
-	}	
+	}
+	game->nb_map_lines = nb_lines;
 	return (TRUE);
 }

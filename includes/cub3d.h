@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nledent <nledent@42angouleme.fr>           +#+  +:+       +#+        */
+/*   By: nledent <nledent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 12:20:46 by aranger           #+#    #+#             */
-/*   Updated: 2024/04/07 18:58:02 by nledent          ###   ########.fr       */
+/*   Updated: 2024/04/07 22:03:12 by nledent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef enum cb_param_type
 typedef struct s_params
 {
 	char		**map;
+	int			nb_map_lines;
 	char		*path_texture[4];
 	int			ceiling_color;
 	int			floor_color;
@@ -68,6 +69,7 @@ t_errors	extract_rgb_str(t_params *game, t_list *color,
 t_errors	extract_map(t_params *game);
 t_bool		is_line_empty(t_list *last);
 t_bool		map_to_tab(t_params *game, t_list *head);
+t_bool		check_walls(t_params *game);
 
 /* EXEC FUNCTION */
 
