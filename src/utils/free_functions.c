@@ -6,11 +6,22 @@
 /*   By: nledent <nledent@42angouleme.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 17:56:50 by nledent           #+#    #+#             */
-/*   Updated: 2024/04/02 14:03:24 by nledent          ###   ########.fr       */
+/*   Updated: 2024/04/07 18:51:19 by nledent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
+
+void	free_el_list(t_list *element)
+{
+	if (element != NULL)
+	{
+		if (element->content != NULL)
+			free(element->content);
+		free(element);
+		element = NULL;
+	}
+}
 
 static void	free_lines_list(t_list *head)
 {
@@ -47,5 +58,6 @@ void	free_game(t_params *game)
 {
 	free_lines_list(game->head_list_lines);
 	free_path_textures(game);
+	free_split(game->map);
 	free(game);
 }

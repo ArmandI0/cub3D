@@ -6,7 +6,7 @@
 /*   By: nledent <nledent@42angouleme.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 17:55:29 by nledent           #+#    #+#             */
-/*   Updated: 2024/04/04 19:39:54 by nledent          ###   ########.fr       */
+/*   Updated: 2024/04/06 12:36:37 by nledent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ static int	put_path_if_not_null(t_params *game, t_list *texture_path[4], char *s
 			path[0] = ' ';
 			path[1] = ' ';
 			game->path_texture[i] = ft_strtrim(path, set);
+			del_el_list(texture_path[i], game);
 			free (path);
 			if (game->path_texture[i] == NULL || (game->path_texture[i])[0] == 0)
 				return (ER_INVALID_MAP_NULL_PATH);
@@ -100,7 +101,7 @@ static t_bool	check_access_paths(char *path_texture[4])
 	i = 0;
 	while (i < 4)
 	{
-		ft_printf_fd(1, "%s\n", path_texture[i]);
+		ft_printf_fd(1, "print path %s\n", path_texture[i]);
 		fd = open(path_texture[i], O_RDONLY);
 		if (fd == -1)
 			return (FALSE);
@@ -111,7 +112,7 @@ static t_bool	check_access_paths(char *path_texture[4])
 	return (TRUE);
 }
 
-int	extract_path_textures(t_params *game, t_list *head)
+t_errors	extract_path_textures(t_params *game, t_list *head)
 {
 	t_list	*texture_path[4];
 	int		r_value;
@@ -123,7 +124,7 @@ int	extract_path_textures(t_params *game, t_list *head)
 	if (look_for_double_param(texture_path) == TRUE)
 		return (ER_INVALID_MAP_DOUBLE);
 	put_path_default_if_null(game, texture_path);
-	r_value = put_path_if_not_null(game, texture_path, "\t\n ");
+	r_value = put_path_if_not_null(game, texture_path, " \n");
 	if (r_value != 0)
 		return (r_value);
 	if (check_access_paths(game->path_texture) == FALSE)

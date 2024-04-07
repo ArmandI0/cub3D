@@ -6,7 +6,7 @@
 /*   By: nledent <nledent@42angouleme.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 17:56:50 by nledent           #+#    #+#             */
-/*   Updated: 2024/04/04 19:37:38 by nledent          ###   ########.fr       */
+/*   Updated: 2024/04/05 14:27:19 by nledent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,10 @@ static t_bool	check_identifier_name_only(char *identifier_in_str, int len_identi
 {
 	if (identifier_in_str[len_identifier] == 0)
 		return (TRUE);
-	else if (identifier_in_str[len_identifier] == '\t')
-		return (TRUE);
 	else if (identifier_in_str[len_identifier] == ' ')
 		return (TRUE);
 	else
-	{
-		printf("ERROR----");
 		return (FALSE);
-	}
 }
 
 t_list	*get_line_with_str(t_list *head, char *identifier)

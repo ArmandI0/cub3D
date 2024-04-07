@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lines_map_extraction.c                             :+:      :+:    :+:   */
+/*   extract_file.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nledent <nledent@42angouleme.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 17:55:29 by nledent           #+#    #+#             */
-/*   Updated: 2024/04/02 15:50:35 by nledent          ###   ########.fr       */
+/*   Updated: 2024/04/07 14:58:40 by nledent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,18 @@ static t_list	*line_to_list(const char *line, t_list *last_el)
 	{
 		new_el = ft_lstnew(ft_strdup(line));
 		last_el->next = new_el;
+		new_el->prev = last_el;
 	}
 	return (new_el);
 }
 
-int	extract_map_into_list(t_params *game)
+int	extract_file_into_list(t_params *game, const char *filepath)
 {
 	int		fd;
 	char	*line;
 	t_list	*last_el_list;
 
-	fd = open(game->map_file, O_RDONLY);
+	fd = open(filepath, O_RDONLY);
 	line = get_next_line(fd);
 	game->head_list_lines = line_to_list((const char *)line,
 			game->head_list_lines);
