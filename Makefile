@@ -21,6 +21,10 @@ HEADERS			= -I ./include -I $(LIBMLX)/include
 SRCS			= \
 				main.c \
 				fct_hook.c \
+				REPLACE_parsing.c \
+				print_map/draw_minimap.c \
+				print_map/utils.c \
+				utils/convert_color.c \
 				
 SRC				= $(addprefix src/, $(SRCS))
 OBJS			= $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
@@ -37,7 +41,7 @@ D_OBJS_BONUS	= mkdir -p $(@D)
 #-UTILS-#
 
 CC 				= cc
-CFLAGS 			= -Wall -Wextra -Werror -Wunreachable-code -Ofast
+CFLAGS 			= -Wall -Wextra -Werror -Wunreachable-code -g
 NAME 			= cub3D
 RM 				= rm -f
 RMR				= rm -rf
