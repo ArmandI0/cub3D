@@ -6,7 +6,7 @@
 /*   By: aranger <aranger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 13:40:47 by aranger           #+#    #+#             */
-/*   Updated: 2024/04/08 15:40:18 by aranger          ###   ########.fr       */
+/*   Updated: 2024/04/08 16:51:51 by aranger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,6 @@ void	close_fct(void *param);
 t_map *init_argument(void); // init the data structure
 void	display_minimap(t_window_settings *set, t_map *minimap);
 void	ft_error(t_window_settings *set);
+uint32_t	convert_color(unsigned int color);
 
 #endif
