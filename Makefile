@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nledent <nledent@student.42.fr>            +#+  +:+       +#+         #
+#    By: aranger <aranger@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/31 17:54:43 by nledent           #+#    #+#              #
-#    Updated: 2024/04/07 22:03:43 by nledent          ###   ########.fr        #
+#    Updated: 2024/04/09 14:02:34 by aranger          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,13 @@ SRCS			= 	\
 					utils/colors.c \
 					utils/utils.c \
 					utils/utils_lst.c \
+					main.c \
+					fct_hook.c \
+					REPLACE_parsing.c \
+					print_map/draw_minimap.c \
+					print_map/utils.c \
+					manage_player/minimap_player.c \
+					command/key_hook.c \
 
 SRC				= $(addprefix src/, $(SRCS))
 OBJS			= $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
@@ -46,7 +53,7 @@ D_OBJS			= mkdir -p $(@D)
 #-UTILS-#
 
 CC 				= cc
-CFLAGS 			= -Wall -Wextra -Werror -g
+CFLAGS 			= -Wall -Wextra -Werror -Wunreachable-code -g
 NAME 			= cub3D
 RM 				= rm -f
 RMR				= rm -rf
