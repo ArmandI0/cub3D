@@ -24,8 +24,9 @@ SRCS			= \
 				REPLACE_parsing.c \
 				print_map/draw_minimap.c \
 				print_map/utils.c \
-				utils/convert_color.c \
-				
+				manage_player/minimap_player.c \
+				command/key_hook.c \
+
 SRC				= $(addprefix src/, $(SRCS))
 OBJS			= $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 D_OBJS			= mkdir -p $(@D)
