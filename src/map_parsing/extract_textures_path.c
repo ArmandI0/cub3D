@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   extract_textures_path.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nledent <nledent@42angouleme.fr>           +#+  +:+       +#+        */
+/*   By: aranger <aranger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 17:55:29 by nledent           #+#    #+#             */
-/*   Updated: 2024/04/06 12:36:37 by nledent          ###   ########.fr       */
+/*   Updated: 2024/04/09 14:24:01 by aranger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "../../includes/cub3D.h"
 
 static t_bool	look_for_double_param(t_list *texture_path[4])
 {

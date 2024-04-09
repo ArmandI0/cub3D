@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   utils_lst.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nledent <nledent@42angouleme.fr>           +#+  +:+       +#+        */
+/*   By: aranger <aranger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 17:56:50 by nledent           #+#    #+#             */
-/*   Updated: 2024/04/07 13:15:19 by nledent          ###   ########.fr       */
+/*   Updated: 2024/04/09 14:23:42 by aranger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "../../includes/cub3D.h"
 
 void	del_el_list(t_list *element, t_params *game)
 {

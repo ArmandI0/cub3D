@@ -6,7 +6,7 @@
 /*   By: aranger <aranger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 14:49:38 by aranger           #+#    #+#             */
-/*   Updated: 2024/04/09 12:36:34 by aranger          ###   ########.fr       */
+/*   Updated: 2024/04/09 15:41:49 by aranger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,17 +62,19 @@ void print_minimap(t_map *minimap, t_window_settings *set)
 	
 	i = 0;
 	j = 0;
-	size = 25;
+	size = 10;
 	while (minimap->map2d[i] != NULL)
 	{
 		while (minimap->map2d[i][j] != '\0')
 		{
 			if (minimap->map2d[i][j] == '1')
-				display_square(j * size, i * size, size, set->img, 0xFF0000FF, TRUE );
+				display_square(j * size, i * size, size, set->img, convert_color(0x00D7FF), TRUE );
+			else if (minimap->map2d[i][j] == '0')
+				display_square(j * size, i * size, size, set->img,convert_color(0xFFCF00), TRUE );
 			else if (minimap->map2d[i][j] == 'P')
 				display_square(j * size, i * size, size, set->img, convert_color(0x00D7FF), TRUE);
 			else
-				display_square(j * size, i * size, size, set->img, convert_color(0xFFCF00), TRUE);
+				display_square(j * size, i * size, size, set->img, convert_color(0x000000), FALSE);
 			j++;
 		}
 		j=0;

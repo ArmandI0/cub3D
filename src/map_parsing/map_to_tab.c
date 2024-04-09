@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   map_to_tab.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nledent <nledent@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aranger <aranger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 17:55:29 by nledent           #+#    #+#             */
-/*   Updated: 2024/04/07 22:01:27 by nledent          ###   ########.fr       */
+/*   Updated: 2024/04/09 14:48:08 by aranger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "../../includes/cub3D.h"
 
 static int	get_nb_lines(t_list *head)
 {
@@ -80,12 +80,15 @@ t_bool	map_to_tab(t_params *game, t_list *head)
 	line = head;
 	nb_lines = get_nb_lines(head);
 	size_max_line = get_len_max(head);
-	game->map = ft_calloc(nb_lines + 1, sizeof(char *));
+	game->map = ft_calloc(1, sizeof(t_map));
 	if (game->map == NULL)
+		return (FALSE);
+	game->map->map2d = ft_calloc(nb_lines + 1, sizeof(char *));
+	if (game->map->map2d == NULL)
 		return (FALSE);
 	while (line)
 	{
-		if (line_to_tab(game->map, line, id_line, size_max_line) == FALSE)
+		if (line_to_tab(game->map->map2d, line, id_line, size_max_line) == FALSE)
 			return (FALSE);
 		id_line ++;
 		line = line->next;

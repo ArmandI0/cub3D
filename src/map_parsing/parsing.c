@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nledent <nledent@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aranger <aranger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 17:55:29 by nledent           #+#    #+#             */
-/*   Updated: 2024/04/07 22:02:46 by nledent          ###   ########.fr       */
+/*   Updated: 2024/04/09 14:24:06 by aranger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "../../includes/cub3D.h"
 
 static void	print_err_free_exit(t_params *game, t_errors error)
 {

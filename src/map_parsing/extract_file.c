@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   extract_file.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nledent <nledent@42angouleme.fr>           +#+  +:+       +#+        */
+/*   By: aranger <aranger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 17:55:29 by nledent           #+#    #+#             */
-/*   Updated: 2024/04/07 14:58:40 by nledent          ###   ########.fr       */
+/*   Updated: 2024/04/09 14:23:56 by aranger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "../../includes/cub3D.h"
 
 static t_list	*line_to_list(const char *line, t_list *last_el)
 {

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   check_walls.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nledent <nledent@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aranger <aranger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 17:55:29 by nledent           #+#    #+#             */
-/*   Updated: 2024/04/07 22:25:37 by nledent          ###   ########.fr       */
+/*   Updated: 2024/04/09 14:35:18 by aranger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "../../includes/cub3D.h"
 
 static t_bool	check_all_wall_around(char **map, int i, int j)
 {
@@ -60,7 +60,7 @@ t_bool		check_walls(t_params *game)
 	int		i;
 
 	i = 0;
-	map = game->map;
+	map = game->map->map2d;
 	nb_lines = game->nb_map_lines;
 	while (map[0][i] != 0)
 	{

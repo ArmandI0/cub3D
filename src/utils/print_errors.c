@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   print_errors.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nledent <nledent@42angouleme.fr>           +#+  +:+       +#+        */
+/*   By: aranger <aranger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 18:16:32 by nledent           #+#    #+#             */
-/*   Updated: 2024/04/07 18:49:09 by nledent          ###   ########.fr       */
+/*   Updated: 2024/04/09 14:23:40 by aranger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "../../includes/cub3D.h"
 
 static void	print_error2(t_errors error)
 {

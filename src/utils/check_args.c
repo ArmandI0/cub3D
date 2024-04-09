@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   check_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nledent <nledent@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aranger <aranger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 17:56:50 by nledent           #+#    #+#             */
-/*   Updated: 2024/03/31 18:39:08 by nledent          ###   ########.fr       */
+/*   Updated: 2024/04/09 14:23:33 by aranger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "../../includes/cub3D.h"
 
 static t_bool	check_nb_args(int argc)
 {

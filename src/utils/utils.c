@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nledent <nledent@42angouleme.fr>           +#+  +:+       +#+        */
+/*   By: aranger <aranger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 17:56:50 by nledent           #+#    #+#             */
-/*   Updated: 2024/04/05 14:27:19 by nledent          ###   ########.fr       */
+/*   Updated: 2024/04/09 14:23:46 by aranger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "../../includes/cub3D.h"
 
 static t_bool	check_identifier_name_only(char *identifier_in_str, int len_identifier)
 {

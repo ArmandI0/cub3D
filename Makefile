@@ -6,19 +6,27 @@
 #    By: aranger <aranger@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/31 17:54:43 by nledent           #+#    #+#              #
-#    Updated: 2024/04/09 14:02:34 by aranger          ###   ########.fr        #
+#    Updated: 2024/04/09 14:32:00 by aranger          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #-PATH FILES-#
 
 SRC_DIR			= src
+SRC_BONUS_DIR	= src_bonus
 OBJ_DIR			= obj
+OBJ_BONUS_DIR	= obj_bonus
 
 #-LIBFT-#
 
 LIBFT			= lib/libft
 LIBFT_A			= lib/libft/libft.a
+
+#-LIBMLX-#
+
+LIBMLX			= lib/MLX42
+LIBMLX_A		= $(LIBMLX)/build/libmlx42.a 
+HEADERS			= -I ./include -I $(LIBMLX)/include
 
 #-SRC-#
 
@@ -31,7 +39,6 @@ SRCS			= 	\
 					map_parsing/rgb_to_int.c \
 					map_parsing/map_to_tab.c \
 					map_parsing/check_walls.c \
-					game/main.c \
 					utils/check_args.c \
 					utils/print_errors.c \
 					utils/free_functions.c \
@@ -62,24 +69,38 @@ RMR				= rm -rf
 
 all:			$(NAME)
 
+$(LIBMLX_A):
+				@cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
+
 $(LIBFT_A) :
 				@make -C $(LIBFT)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 				$(D_OBJS)
-				$(CC) $(CFLAGS)  -c -o $@ $< 
+				$(CC) $(CFLAGS) -c -o $@ $<
 
-$(NAME): 		$(OBJS)  $(LIBFT_A) 
-				@$(CC) $(CFLAGS) $(OBJS) $(LIBFT_A) -o $(NAME) -lreadline
+$(OBJ_BONUS_DIR)/%.o: $(SRC_BONUS_DIR)/%.c
+				$(D_OBJS_BONUS)
+				$(CC) $(CFLAGS) -c -o $@ $<
 
+$(NAME): 		$(OBJS) $(LIBFT_A) $(LIBMLX_A)
+				@$(CC) $(CFLAGS) $(OBJS) $(LIBFT_A) $(LIBMLX_A) -ldl -lglfw -pthread -lm $(HEADERS) -o $(NAME)
+				
 clean:
 				@$(RMR) $(OBJ_DIR)
+				@$(RMR) $(OBJ_BONUS_DIR)
+				@$(RMR) $(LIBMLX)/build
 				@make -C $(LIBFT) clean
 
 fclean: 		clean
 				@$(RM) $(NAME)
+				@$(RM) $(NAME_BONUS)
 				@make -C $(LIBFT) fclean
 
 re:				fclean all
 
-.PHONY : 		all clean fclean re
+bonus :			$(LIBFT_A) $(LIBMLX_A) $(OBJS_BONUS)
+				@$(RM) $(NAME)
+				@$(CC) $(CFLAGS) $(OBJS_BONUS) $(LIBFT_A)  $(LIBMLX_A) -ldl -lglfw -pthread -lm $(HEADERS) -o $(NAME)
+
+.PHONY : 		all clean fclean re bonus

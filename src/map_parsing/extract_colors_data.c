@@ -3,20 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   extract_colors_data.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nledent <nledent@42angouleme.fr>           +#+  +:+       +#+        */
+/*   By: aranger <aranger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 17:55:29 by nledent           #+#    #+#             */
-/*   Updated: 2024/04/06 12:36:48 by nledent          ###   ########.fr       */
+/*   Updated: 2024/04/09 14:27:13 by aranger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "../../includes/cub3D.h"
 
 static t_bool	look_for_double_param(t_list *color_str, t_param_type p_type)
 {
 	t_list	*double_param;
 	char	*str;
 
+	str = NULL;
 	if (color_str != NULL)
 	{
 		if (p_type == PARAM_F)
