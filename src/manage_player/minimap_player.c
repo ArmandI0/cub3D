@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fct_hook.c                                         :+:      :+:    :+:   */
+/*   minimap_player.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aranger <aranger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/04 13:55:08 by aranger           #+#    #+#             */
-/*   Updated: 2024/04/09 12:28:30 by aranger          ###   ########.fr       */
+/*   Created: 2024/04/09 11:20:30 by aranger           #+#    #+#             */
+/*   Updated: 2024/04/09 12:41:51 by aranger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3D.h"
+#include "../../includes/cub3D.h"
 
-void	resize_mlx(int32_t width, int32_t height, void *param)
+void	print_player(t_window_settings *set)
 {
-	t_window_settings	*set;
+	mlx_image_t	*img;
 
-	set = param;
-	set->window->width = width;
-	set->window->height = height;
-	mlx_delete_image(set->window, set->img);
-}
-
-void	close_fct(void *param)
-{
-	t_window_settings	*set;
-
-	set = param;
-	mlx_close_window(set->window);
+	img = mlx_new_image(set->window, 50, 50);
+	if (!img || (mlx_image_to_window(set->window, img, 75, 75) < 0))
+		ft_error(set);
+	mlx_set_instance_depth(img->instances, 10);
+	mlx_image_to_window(set->window, img, 75, 75);
+	display_square(0, 0, 10,img, convert_color(0x00D7FF), FALSE);
+	set->player_img = img;
 }

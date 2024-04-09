@@ -6,7 +6,7 @@
 /*   By: aranger <aranger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 13:40:47 by aranger           #+#    #+#             */
-/*   Updated: 2024/04/08 15:40:18 by aranger          ###   ########.fr       */
+/*   Updated: 2024/04/09 12:19:57 by aranger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct s_window_settings
 	int			l;
 	int			h;
 	mlx_image_t	*img;
+	mlx_image_t	*player_img;
 	mlx_t		*window;
 }				t_window_settings;
 
@@ -38,6 +39,12 @@ typedef struct s_map
 	int		h_map;
 }				t_map;
 
+// typedef struct s_minimap
+// {
+	
+	
+// }
+
 void	my_keyhook(mlx_key_data_t keydata, void *param);
 void	resize_mlx(int32_t width, int32_t height, void *param);
 void	put_pixel(mlx_image_t *img, uint32_t x,
@@ -46,5 +53,8 @@ void	close_fct(void *param);
 t_map *init_argument(void); // init the data structure
 void	display_minimap(t_window_settings *set, t_map *minimap);
 void	ft_error(t_window_settings *set);
+uint32_t	convert_color(unsigned int color);
+void	display_square(int start_x, int start_y, int size, mlx_image_t *img, uint32_t color, t_bool border);
+void	print_player(t_window_settings *minimap);
 
 #endif
