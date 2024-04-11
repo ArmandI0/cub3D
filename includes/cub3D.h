@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aranger <aranger@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nledent <nledent@42angouleme.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 13:40:47 by aranger           #+#    #+#             */
-/*   Updated: 2024/04/09 14:33:48 by aranger          ###   ########.fr       */
+/*   Updated: 2024/04/10 18:58:28 by nledent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,25 +18,31 @@
 # include <math.h>
 # include <stdlib.h>
 # include <stdio.h>
-# define WIDTH 1024
-# define HEIGHT 1024
+# define WIDTH 1080
+# define HEIGHT 720
 
 typedef int	t_bool;
 
 typedef struct s_window_settings
 {
-	int			l;
+	int			w;
 	int			h;
 	mlx_image_t	*img;
 	mlx_image_t	*player_img;
 	mlx_t		*window;
 }				t_window_settings;
 
+typedef	struct s_coord
+{
+	double	x;
+	double	y;
+}				t_coord;
+
 typedef struct s_map
 {
 	char	**map2d;
-	int		p_y;
-	int		p_x;
+	t_coord	player;
+	t_coord	dir_vector;
 	int		w_map;
 	int		h_map;
 }				t_map;
@@ -92,7 +98,7 @@ t_bool		is_line_empty(t_list *last);
 t_bool		map_to_tab(t_params *game, t_list *head);
 t_bool		check_walls(t_params *game);
 
-/* EXEC FUNCTION */
+/* EXEC FUNCTIONS */
 
 void	my_keyhook(mlx_key_data_t keydata, void *param);
 void	resize_mlx(int32_t width, int32_t height, void *param);
@@ -111,7 +117,9 @@ void	free_game(t_params *game);
 void	free_path_textures(t_params *game);
 void	free_el_list(t_list *element);
 
-/* UTILS FONCTIONS */
+/* RAY CASTING FUNCTIONS*/
+
+/* UTILS FUNCTIONS */
 void	check_args(int argc, const char **argv);
 void	print_error(t_errors error);
 int		rgb_to_int(unsigned char red, unsigned char green, unsigned char blue);
