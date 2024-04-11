@@ -59,7 +59,7 @@ t_bool  raycasting(t_params *game, t_window_settings *set)
 {
 	double posX = 20.5, posY = 11.5;
 	double dirX = 0, dirY = -1;
-	double planeX = 0, planeY = 0.66;
+	double planeX = 0.66, planeY = 0;
 
 	double time = 0;
   	double oldTime = 0;
@@ -145,7 +145,7 @@ t_bool  raycasting(t_params *game, t_window_settings *set)
 			int lineHeight = (int)(h / perpWallDist);
 
 			//calculate lowest and highest pixel to fill in current stripe
-			int drawStart = -lineHeight / 2 + h / 2;
+			int drawStart = -lineHeight / 2 + h / 2 - 150;
 			if(drawStart < 0)drawStart = 0;
 			int drawEnd = lineHeight / 2 + h / 2;
 			if(drawEnd >= h)drawEnd = h - 1;
@@ -153,11 +153,6 @@ t_bool  raycasting(t_params *game, t_window_settings *set)
       		//draw the pixels of the stripe as a vertical line
       		draw_ver_line(x, drawStart, drawEnd, game, set, side);
 		}
-		int mapX = (int)posX;
-		int mapY= (int)posY;
-		ft_printf_fd(2, "start position, mapY = %d, mapX = %d\n", mapY, mapX);
-		ft_printf_fd(2, "start position MAP, = %c\n", game->map->map2d[mapY][mapX]);
-
 		mlx_image_to_window(set->window, set->img, 0, 0);
 		(void)time;
 		(void)oldTime;
