@@ -12,6 +12,21 @@
 
 #include "../includes/cub3D.h"
 
+mlx_image_t	*set_img(t_window_settings *set)
+{
+	mlx_image_t *img;
+
+	img = mlx_new_image(set->window, set->window->width, set->window->height);
+	if (!img || (mlx_image_to_window(set->window, img, 0, 0) < 0))
+		ft_error(set);
+	else
+	{
+		mlx_set_instance_depth(img->instances, 0);
+		return (img);
+	}
+	return (NULL);
+}
+
 void	print_map(t_list *head)
 {
 	t_list	*next;
@@ -77,8 +92,9 @@ int	main(int argc, const char **argv)
 	// print_map(game->head_list_lines);
 	// ft_printf_fd(1, "-----MAP TAB----\n");
 	// print_map_tab(game->map->map2d);
-	test_minimap(set, game);
-	raycasting(game);
+	set->img = set_img(set);
+	raycasting(game, set);
+	//test_minimap(set, game);
 	mlx_loop(set->window);
 	mlx_key_hook(set->window, &my_keyhook, set);
 	mlx_resize_hook(set->window, &resize_mlx, set);

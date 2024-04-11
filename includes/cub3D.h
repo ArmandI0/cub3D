@@ -103,7 +103,7 @@ t_bool		check_walls(t_params *game);
 void	my_keyhook(mlx_key_data_t keydata, void *param);
 void	resize_mlx(int32_t width, int32_t height, void *param);
 void	put_pixel(mlx_image_t *img, uint32_t x,
-						uint32_t y, uint32_t color);
+						uint32_t y, int color);
 void	close_fct(void *param);
 t_map *init_argument(void); // init the data structure
 void	display_minimap(t_window_settings *set, t_map *minimap);
@@ -118,6 +118,7 @@ void	free_path_textures(t_params *game);
 void	free_el_list(t_list *element);
 
 /* RAY CASTING FUNCTIONS*/
+t_bool  raycasting(t_params *game, t_window_settings *set);
 
 /* UTILS FUNCTIONS */
 void	check_args(int argc, const char **argv);
