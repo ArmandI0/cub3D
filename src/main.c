@@ -6,7 +6,7 @@
 /*   By: aranger <aranger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 13:26:12 by aranger           #+#    #+#             */
-/*   Updated: 2024/04/12 14:49:24 by aranger          ###   ########.fr       */
+/*   Updated: 2024/04/12 16:10:43 by aranger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ int	main(int argc, const char **argv)
 	game->set = set;
 	set->img = set_img(set);
 	game->player = init_new_players('N', 20.5, 11.5);
+	set->player = game->player;
 	raycasting(game, set, game->player);
 	test_minimap(set, game);
 	mlx_key_hook(set->window, &my_keyhook, game);

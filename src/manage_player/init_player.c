@@ -6,7 +6,7 @@
 /*   By: aranger <aranger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 13:43:06 by aranger           #+#    #+#             */
-/*   Updated: 2024/04/12 14:45:33 by aranger          ###   ########.fr       */
+/*   Updated: 2024/04/12 15:35:19 by aranger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,32 +57,34 @@ void rotate_player(t_player *player, double angle)
     double new_planeY;
     double rad = M_PI * angle / 180.0;
 
-    // Mettre à jour le vecteur direction
     new_dirX = player->dir_x * cos(rad) - player->dir_y * sin(rad);
     new_dirY = player->dir_x * sin(rad) + player->dir_y * cos(rad);
     player->dir_x = new_dirX;
     player->dir_y = new_dirY;
-
-    // Mettre à jour le vecteur plane
     new_planeX = player->plane_x * cos(rad) - player->plane_y * sin(rad);
     new_planeY = player->plane_x * sin(rad) + player->plane_y * cos(rad);
     player->plane_x = new_planeX;
     player->plane_y = new_planeY;
 }
 
-void move_player_forward(t_player *player, double speed)
+void translate_player_forward(t_player *player, double step)
 {
     double new_pos_x;
     double new_pos_y;
 
-    // Mettre à jour les coordonnées du joueur
-    new_pos_x = player->pos_x + player->dir_x * speed;
-    new_pos_y = player->pos_y + player->dir_y * speed;
+    new_pos_x = player->pos_x + (player->dir_x * step);
+    new_pos_y = player->pos_y + (player->dir_y * step);
+    player->pos_x = new_pos_x;
+    player->pos_y = new_pos_y;
+}
 
-    // Vérifier si la nouvelle position est valide (par exemple, pas de collision avec un mur)
-    // ...
+void translate_player_l_to_r(t_player *player, double step)
+{
+    double new_pos_x;
+    double new_pos_y;
 
-    // Si la nouvelle position est valide, mettre à jour les coordonnées du joueur
+    new_pos_x = player->pos_x + (player->plane_x * step);
+    new_pos_y = player->pos_y + (player->plane_y * step);
     player->pos_x = new_pos_x;
     player->pos_y = new_pos_y;
 }

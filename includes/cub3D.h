@@ -6,7 +6,7 @@
 /*   By: aranger <aranger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 13:40:47 by aranger           #+#    #+#             */
-/*   Updated: 2024/04/12 14:42:25 by aranger          ###   ########.fr       */
+/*   Updated: 2024/04/12 15:39:27 by aranger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_window_settings
 	int			h;
 	mlx_image_t	*img;
 	mlx_image_t	*player_img;
+	mlx_image_t	*minimap_img;
 	t_player	*player;
 	mlx_t		*window;
 }				t_window_settings;
@@ -143,6 +144,8 @@ void	del_el_list(t_list *element, t_params *game);
 t_player	*init_new_players(char direction, double x, double y);
 void rotate_player(t_player *player, double angle);
 mlx_image_t	*set_img(t_window_settings *set);
-void move_player_forward(t_player *player, double speed);
+void 	translate_player_forward(t_player *player, double speed);
+void 	translate_player_l_to_r(t_player *player, double step);
+
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: aranger <aranger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 14:49:38 by aranger           #+#    #+#             */
-/*   Updated: 2024/04/09 15:41:49 by aranger          ###   ########.fr       */
+/*   Updated: 2024/04/12 16:05:22 by aranger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,13 +68,13 @@ void print_minimap(t_map *minimap, t_window_settings *set)
 		while (minimap->map2d[i][j] != '\0')
 		{
 			if (minimap->map2d[i][j] == '1')
-				display_square(j * size, i * size, size, set->img, convert_color(0x00D7FF), TRUE );
+				display_square(j * size, i * size, size, set->minimap_img, convert_color(0x00D7FF), TRUE );
 			else if (minimap->map2d[i][j] == '0')
-				display_square(j * size, i * size, size, set->img,convert_color(0xFFCF00), TRUE );
+				display_square(j * size, i * size, size, set->minimap_img,convert_color(0xFFCF00), TRUE );
 			else if (minimap->map2d[i][j] == 'N')
-				display_square(j * size, i * size, size, set->img, convert_color(0x00D7FF), TRUE);
+				display_square(j * size, i * size, size, set->minimap_img, convert_color(0x00D7FF), TRUE);
 			else
-				display_square(j * size, i * size, size, set->img, convert_color(0x000000), FALSE);
+				display_square(j * size, i * size, size, set->minimap_img, convert_color(0x000000), FALSE);
 			j++;
 		}
 		j=0;
@@ -84,6 +84,12 @@ void print_minimap(t_map *minimap, t_window_settings *set)
 
 void display_minimap(t_window_settings *set, t_map *minimap)
 {
+	mlx_image_t	*img;
+
+	img = mlx_new_image(set->window, 500, 500);
+	if (!img || (mlx_image_to_window(set->window, img, 10, 10) < 0))
+		ft_error(set);
+	set->minimap_img = img;
 	print_minimap(minimap, set);
 	print_player(set);
 }
