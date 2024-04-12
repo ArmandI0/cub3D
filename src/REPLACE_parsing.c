@@ -14,7 +14,7 @@
 
 t_map *init_argument(void) // init the data structure
 {
- t_map *dt = calloc(1, sizeof(t_map)); // init the data structure
+/*  t_map *dt = calloc(1, sizeof(t_map)); // init the data structure
  dt->map2d = calloc(10, sizeof(char *)); // init the map
  dt->map2d[0] = ft_strdup("1111111111111111111111111"); //fill the map
  dt->map2d[1] = ft_strdup("1000000000000000000100001");
@@ -30,5 +30,6 @@ t_map *init_argument(void) // init the data structure
  dt->p_x = 14; // player x position in the map
  dt->w_map = 25; // map width
  dt->h_map = 9; // map height
- return (dt); // return the data structure
+ return (dt); // return the data structure */
+ return (NULL);
 }

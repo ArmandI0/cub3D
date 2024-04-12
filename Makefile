@@ -39,6 +39,7 @@ SRCS			= 	\
 					map_parsing/rgb_to_int.c \
 					map_parsing/map_to_tab.c \
 					map_parsing/check_walls.c \
+					raycasting/raycasting.c \
 					utils/check_args.c \
 					utils/print_errors.c \
 					utils/free_functions.c \

@@ -18,7 +18,7 @@ uint32_t	convert_color(unsigned int color)
 }
 
 void	put_pixel(mlx_image_t *img, uint32_t x,
-						uint32_t y, uint32_t color)
+						uint32_t y, int color)
 {
 	if ((x > 0 && x < img->width) && (y > 0 && y < img->height))
 		mlx_put_pixel(img, x, y, color);

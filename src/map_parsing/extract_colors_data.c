@@ -42,9 +42,9 @@ static void	put_color_default_if_null(t_params *game, t_list *color_str,
 	if (color_str == NULL)
 	{
 		if (color == PARAM_F)
-			game->floor_color = rgb_to_int(255, 100, 100);
+			game->floor_color = rgb_to_int(200, 150, 100);
 		else if (color == PARAM_C)
-			game->ceiling_color = rgb_to_int(180, 230, 255);
+			game->ceiling_color = rgb_to_int(150, 200, 255);
 	}
 }
 

@@ -71,7 +71,7 @@ void print_minimap(t_map *minimap, t_window_settings *set)
 				display_square(j * size, i * size, size, set->img, convert_color(0x00D7FF), TRUE );
 			else if (minimap->map2d[i][j] == '0')
 				display_square(j * size, i * size, size, set->img,convert_color(0xFFCF00), TRUE );
-			else if (minimap->map2d[i][j] == 'P')
+			else if (minimap->map2d[i][j] == 'N')
 				display_square(j * size, i * size, size, set->img, convert_color(0x00D7FF), TRUE);
 			else
 				display_square(j * size, i * size, size, set->img, convert_color(0x000000), FALSE);
@@ -84,13 +84,6 @@ void print_minimap(t_map *minimap, t_window_settings *set)
 
 void display_minimap(t_window_settings *set, t_map *minimap)
 {
-	mlx_image_t *img;
-
-	img = mlx_new_image(set->window, set->window->height, set->window->height);
-	if (!img || (mlx_image_to_window(set->window, img, 0, 0) < 0))
-		ft_error(set);
-	set->img = img;
-	mlx_set_instance_depth(img->instances, 0);
 	print_minimap(minimap, set);
 	print_player(set);
 }
