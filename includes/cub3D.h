@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nledent <nledent@42angouleme.fr>           +#+  +:+       +#+        */
+/*   By: aranger <aranger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 13:40:47 by aranger           #+#    #+#             */
-/*   Updated: 2024/04/10 18:58:28 by nledent          ###   ########.fr       */
+/*   Updated: 2024/04/13 17:50:33 by aranger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,26 @@
 
 typedef int	t_bool;
 
+typedef struct s_player
+{
+	double	pos_x;
+	double	pos_y;
+	double	dir_x;
+	double	dir_y;
+	double	plane_x;
+	double	plane_y;
+	int		w_map;
+	int		h_map;
+}			t_player;
+
 typedef struct s_window_settings
 {
 	int			w;
 	int			h;
 	mlx_image_t	*img;
 	mlx_image_t	*player_img;
+	mlx_image_t	*minimap_img;
+	t_player	*player;
 	mlx_t		*window;
 }				t_window_settings;
 
@@ -78,6 +92,8 @@ typedef enum cb_param_type
 typedef struct s_params
 {
 	t_map		*map;
+	t_window_settings *set;
+	t_player		*player;
 	int			nb_map_lines;
 	char		*path_texture[4];
 	int			ceiling_color;
@@ -100,17 +116,17 @@ t_bool		check_walls(t_params *game);
 
 /* EXEC FUNCTIONS */
 
-void	my_keyhook(mlx_key_data_t keydata, void *param);
-void	resize_mlx(int32_t width, int32_t height, void *param);
-void	put_pixel(mlx_image_t *img, uint32_t x,
+void		my_keyhook(mlx_key_data_t keydata, void *param);
+void		resize_mlx(int32_t width, int32_t height, void *param);
+void		put_pixel(mlx_image_t *img, uint32_t x,
 						uint32_t y, int color);
-void	close_fct(void *param);
-t_map *init_argument(void); // init the data structure
-void	display_minimap(t_window_settings *set, t_map *minimap);
-void	ft_error(t_window_settings *set);
+void		close_fct(void *param);
+t_map *		init_argument(void); // init the data structure
+void		display_minimap(t_window_settings *set, t_map *minimap);
+void		ft_error(t_window_settings *set);
 uint32_t	convert_color(unsigned int color);
-void	display_square(int start_x, int start_y, int size, mlx_image_t *img, uint32_t color, t_bool border);
-void	print_player(t_window_settings *minimap);
+void		display_square(int start_x, int start_y, int size, mlx_image_t *img, uint32_t color, t_bool border);
+void		print_player(t_window_settings *minimap);
 
 /* FREE FUNCTIONS */
 void	free_game(t_params *game);
@@ -118,12 +134,18 @@ void	free_path_textures(t_params *game);
 void	free_el_list(t_list *element);
 
 /* RAY CASTING FUNCTIONS*/
-t_bool  raycasting(t_params *game, t_window_settings *set);
+t_bool  raycasting(t_params *game, t_window_settings *set, t_player *player);
 
 /* UTILS FUNCTIONS */
 void	check_args(int argc, const char **argv);
 void	print_error(t_errors error);
 int		rgb_to_int(unsigned char red, unsigned char green, unsigned char blue);
 void	del_el_list(t_list *element, t_params *game);
+t_player	*init_new_players(char direction, double x, double y);
+void rotate_player(t_player *player, double angle);
+mlx_image_t	*set_img(t_window_settings *set);
+void 	translate_player_forward(t_player *player, double step, char** map);
+void	translate_player_l_to_r(t_player *player, double step,  char** map);
+void	cursor_fct(double xpos, double ypos, void *param);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nledent <nledent@42angouleme.fr>           +#+  +:+       +#+        */
+/*   By: aranger <aranger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 13:26:12 by aranger           #+#    #+#             */
-/*   Updated: 2024/04/10 18:53:20 by nledent          ###   ########.fr       */
+/*   Updated: 2024/04/13 17:42:33 by aranger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,12 +91,17 @@ int	main(int argc, const char **argv)
 	}
 	// print_map(game->head_list_lines);
 	// ft_printf_fd(1, "-----MAP TAB----\n");
-	// print_map_tab(game->map->map2d);
+	//print_map_tab(game->map->map2d);
+	game->set = set;
 	set->img = set_img(set);
-	raycasting(game, set);
-	//test_minimap(set, game);
+	game->player = init_new_players('N', 20.5, 11.5);
+	set->player = game->player;
+	raycasting(game, set, game->player);
+	test_minimap(set, game);
+	mlx_key_hook(set->window, &my_keyhook, game);
+	mlx_set_cursor_mode(set->window, MLX_MOUSE_HIDDEN);
+	mlx_cursor_hook(set->window, &cursor_fct, game);
 	mlx_loop(set->window);
-	mlx_key_hook(set->window, &my_keyhook, set);
 	mlx_resize_hook(set->window, &resize_mlx, set);
 	mlx_close_hook(set->window, &close_fct, set);
 	mlx_terminate(set->window);

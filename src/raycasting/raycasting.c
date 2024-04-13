@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nledent <nledent@42angouleme.fr>           +#+  +:+       +#+        */
+/*   By: aranger <aranger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 18:52:01 by nledent           #+#    #+#             */
-/*   Updated: 2024/04/10 19:19:23 by nledent          ###   ########.fr       */
+/*   Updated: 2024/04/12 16:04:58 by aranger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,19 @@ static void	draw_ver_line(int pos_x_vertline, int	drawStart, int	drawEnd, t_para
 	}
 }
 
-t_bool  raycasting(t_params *game, t_window_settings *set)
+t_bool  raycasting(t_params *game, t_window_settings *set, t_player *player)
 {
-	double posX = 20.5, posY = 11.5;
-	double dirX = 0, dirY = -1;
-	double planeX = 0.66, planeY = 0;
+	double posX , posY;
+	double dirX, dirY;
+	double planeX, planeY;
 
-	double time = 0;
-  	double oldTime = 0;
+	posX = player->pos_x;
+	posY = player->pos_y;
+	dirX = player->dir_x;
+	dirY = player->dir_y;
+	planeX = player->plane_x;
+	planeY = player->plane_y;
+
 	int w = WIDTH;
 	int h = HEIGHT;
 	set_map_w_and_h(game);
@@ -154,8 +159,6 @@ t_bool  raycasting(t_params *game, t_window_settings *set)
       		draw_ver_line(x, drawStart, drawEnd, game, set, side);
 		}
 		mlx_image_to_window(set->window, set->img, 0, 0);
-		(void)time;
-		(void)oldTime;
 		return (TRUE);
 }
 
