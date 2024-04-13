@@ -6,7 +6,7 @@
 #    By: aranger <aranger@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/31 17:54:43 by nledent           #+#    #+#              #
-#    Updated: 2024/04/13 18:02:26 by aranger          ###   ########.fr        #
+#    Updated: 2024/04/13 18:31:10 by aranger          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,9 +52,10 @@ SRCS			= 	\
 					print_map/draw_minimap.c \
 					print_map/utils.c \
 					manage_player/minimap_player.c \
-					command/key_hook.c \
+					command/keyboard.c \
 					manage_player/init_player.c \
 					command/mouse.c \
+					command/command.c \
 
 SRC				= $(addprefix src/, $(SRCS))
 OBJS			= $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)

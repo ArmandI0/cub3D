@@ -1,6 +1,24 @@
 
 #include "../../includes/cub3D.h"
 
+/* if tr = FASLSE translate forward else translate R or L*/
+
+static void translation(t_params *p, double step, t_bool tr)
+{
+	if (tr = FALSE)
+		translate_player_forward(p->player, step, p->map->map2d);
+	else
+		translate_player_l_to_r(p->player, step, p->map->map2d)
+	mlx_delete_image(p->set->window, p->set->img);
+	//----------------------------------------------
+	p->set->img = set_img(p->set);
+	// fonction de sortie en cas d'echec du raycasting
+	raycasting(p, p->set, p->player);
+	if(mlx_image_to_window(p->set->window, p->set->minimap_img, 10, 10) < 0)
+		return ; // sortie erreur
+	print_player(p->set);
+}
+
 static void	translation_key(mlx_key_data_t	keydata, void *param)
 {
 	t_params	*p;

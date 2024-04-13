@@ -6,7 +6,7 @@
 /*   By: aranger <aranger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 13:40:47 by aranger           #+#    #+#             */
-/*   Updated: 2024/04/13 17:50:33 by aranger          ###   ########.fr       */
+/*   Updated: 2024/04/13 18:27:40 by aranger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,5 +147,6 @@ mlx_image_t	*set_img(t_window_settings *set);
 void 	translate_player_forward(t_player *player, double step, char** map);
 void	translate_player_l_to_r(t_player *player, double step,  char** map);
 void	cursor_fct(double xpos, double ypos, void *param);
+void	init_command(t_params *game);
 
 #endif
