@@ -6,7 +6,7 @@
 /*   By: aranger <aranger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 17:56:50 by nledent           #+#    #+#             */
-/*   Updated: 2024/04/13 21:02:33 by aranger          ###   ########.fr       */
+/*   Updated: 2024/04/13 21:30:12 by aranger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,27 +54,21 @@ void	free_path_textures(t_params *game)
 	}
 }
 
-// void	free_window_settings(t_window_settings *win)
-// {
-// 	if (win->window != NULL)
-// 	{
-// 		if (win->img != NULL)
-// 			mlx_delete_image(win->window, win->img);
-// 		if (win->minimap_img != NULL)
-// 			mlx_delete_image(win->window, win->minimap_img);
-// 		if (win->minimap_img != NULL)
-// 			mlx_delete_image(win->window, win->minimap_img);
-// 		if (win->player_img != NULL)
-// 			mlx_delete_image(win->window, win->player_img);
-// 		mlx_close_window(win->window);
-// 	}
-// }
-
 void	free_game(t_params *game)
 {
-	mlx_terminate(game->win->window);
+	if (game->win != NULL)
+	{
+		mlx_terminate(game->win->window);
+		free(game->win);
+	}
 	free_lines_list(game->head_list_lines);
 	free_path_textures(game);
-	free_split(game->map->map2d);
+	if (game->map != NULL)
+	{
+		free_split(game->map->map2d);
+		free(game->map);
+	}
+	if (game->player != NULL)
+		free(game->player);
 	free(game);
 }
