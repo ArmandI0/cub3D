@@ -6,7 +6,7 @@
 /*   By: aranger <aranger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 13:40:47 by aranger           #+#    #+#             */
-/*   Updated: 2024/04/12 15:39:27 by aranger          ###   ########.fr       */
+/*   Updated: 2024/04/13 17:50:33 by aranger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,17 +116,17 @@ t_bool		check_walls(t_params *game);
 
 /* EXEC FUNCTIONS */
 
-void	my_keyhook(mlx_key_data_t keydata, void *param);
-void	resize_mlx(int32_t width, int32_t height, void *param);
-void	put_pixel(mlx_image_t *img, uint32_t x,
+void		my_keyhook(mlx_key_data_t keydata, void *param);
+void		resize_mlx(int32_t width, int32_t height, void *param);
+void		put_pixel(mlx_image_t *img, uint32_t x,
 						uint32_t y, int color);
-void	close_fct(void *param);
-t_map *init_argument(void); // init the data structure
-void	display_minimap(t_window_settings *set, t_map *minimap);
-void	ft_error(t_window_settings *set);
+void		close_fct(void *param);
+t_map *		init_argument(void); // init the data structure
+void		display_minimap(t_window_settings *set, t_map *minimap);
+void		ft_error(t_window_settings *set);
 uint32_t	convert_color(unsigned int color);
-void	display_square(int start_x, int start_y, int size, mlx_image_t *img, uint32_t color, t_bool border);
-void	print_player(t_window_settings *minimap);
+void		display_square(int start_x, int start_y, int size, mlx_image_t *img, uint32_t color, t_bool border);
+void		print_player(t_window_settings *minimap);
 
 /* FREE FUNCTIONS */
 void	free_game(t_params *game);
@@ -144,8 +144,8 @@ void	del_el_list(t_list *element, t_params *game);
 t_player	*init_new_players(char direction, double x, double y);
 void rotate_player(t_player *player, double angle);
 mlx_image_t	*set_img(t_window_settings *set);
-void 	translate_player_forward(t_player *player, double speed);
-void 	translate_player_l_to_r(t_player *player, double step);
-
+void 	translate_player_forward(t_player *player, double step, char** map);
+void	translate_player_l_to_r(t_player *player, double step,  char** map);
+void	cursor_fct(double xpos, double ypos, void *param);
 
 #endif

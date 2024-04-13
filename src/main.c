@@ -6,7 +6,7 @@
 /*   By: aranger <aranger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 13:26:12 by aranger           #+#    #+#             */
-/*   Updated: 2024/04/12 16:10:43 by aranger          ###   ########.fr       */
+/*   Updated: 2024/04/13 17:42:33 by aranger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,8 @@ int	main(int argc, const char **argv)
 	raycasting(game, set, game->player);
 	test_minimap(set, game);
 	mlx_key_hook(set->window, &my_keyhook, game);
+	mlx_set_cursor_mode(set->window, MLX_MOUSE_HIDDEN);
+	mlx_cursor_hook(set->window, &cursor_fct, game);
 	mlx_loop(set->window);
 	mlx_resize_hook(set->window, &resize_mlx, set);
 	mlx_close_hook(set->window, &close_fct, set);
