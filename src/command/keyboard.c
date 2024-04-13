@@ -6,13 +6,13 @@
 void	rotation(t_params *p, double step)
 {
 	rotate_player(p->player, step);
-	mlx_delete_image(p->set->window, p->set->img);
-	p->set->img = set_img(p->set);
-	if (raycasting(p, p->set, p->player) == FALSE)
+	mlx_delete_image(p->win->window, p->win->img);
+	p->win->img = set_img(p->win);
+	if (raycasting(p, p->win, p->player) == FALSE)
 		exit_fct(p);
-	if(mlx_image_to_window(p->set->window, p->set->minimap_img, 10, 10) < 0)
+	if(mlx_image_to_window(p->win->window, p->win->minimap_img, 10, 10) < 0)
 		exit_fct(p);
-	print_player(p->set);
+	print_player(p);
 }
 static void translation(t_params *p, double step, t_bool tr)
 {
@@ -20,13 +20,13 @@ static void translation(t_params *p, double step, t_bool tr)
 		translate_player_forward(p->player, step, p->map->map2d);
 	else
 		translate_player_l_to_r(p->player, step, p->map->map2d);
-	mlx_delete_image(p->set->window, p->set->img);
-	p->set->img = set_img(p->set);
-	if (raycasting(p, p->set, p->player) == FALSE)
+	mlx_delete_image(p->win->window, p->win->img);
+	p->win->img = set_img(p->win);
+	if (raycasting(p, p->win, p->player) == FALSE)
 		exit_fct(p);
-	if(mlx_image_to_window(p->set->window, p->set->minimap_img, 10, 10) < 0)
+	if(mlx_image_to_window(p->win->window, p->win->minimap_img, 10, 10) < 0)
 		exit_fct(p);
-	print_player(p->set);
+	print_player(p);
 }
 
 static void	translation_key(mlx_key_data_t	keydata, void *param)
@@ -56,7 +56,7 @@ void	my_keyhook(mlx_key_data_t keydata, void *param)
 	p = param;
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 	{
-		mlx_close_window(p->set->window);
+		mlx_close_window(p->win->window);
 	}
 	translation_key(keydata, param);
 }

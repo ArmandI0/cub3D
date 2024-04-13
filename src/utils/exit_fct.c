@@ -6,7 +6,7 @@
 /*   By: aranger <aranger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 18:56:50 by aranger           #+#    #+#             */
-/*   Updated: 2024/04/13 19:04:34 by aranger          ###   ########.fr       */
+/*   Updated: 2024/04/13 20:24:07 by aranger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	exit_fct(t_params *param)
 {
-	free_game(param);
+	if (param != NULL)
+		free_game(param);
 	exit(1);
 }

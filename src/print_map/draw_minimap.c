@@ -6,7 +6,7 @@
 /*   By: aranger <aranger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 14:49:38 by aranger           #+#    #+#             */
-/*   Updated: 2024/04/12 16:05:22 by aranger          ###   ########.fr       */
+/*   Updated: 2024/04/13 20:43:53 by aranger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,14 +82,16 @@ void print_minimap(t_map *minimap, t_window_settings *set)
 	}
 }
 
-void display_minimap(t_window_settings *set, t_map *minimap)
+void display_minimap(t_params *p)
 {
 	mlx_image_t	*img;
-
+	t_window_settings	*set;
+	
+	set = p->win;
 	img = mlx_new_image(set->window, 500, 500);
 	if (!img || (mlx_image_to_window(set->window, img, 10, 10) < 0))
 		ft_error(set);
 	set->minimap_img = img;
-	print_minimap(minimap, set);
-	print_player(set);
+	print_minimap(p->map, set);
+	print_player(p);
 }

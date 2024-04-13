@@ -6,7 +6,7 @@
 /*   By: aranger <aranger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 17:17:03 by aranger           #+#    #+#             */
-/*   Updated: 2024/04/13 19:12:18 by aranger          ###   ########.fr       */
+/*   Updated: 2024/04/13 20:46:14 by aranger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,5 @@ void	cursor_fct(double xpos, double ypos, void *param)
 		rotation(p, 1);
 	else if (xpos < 540)
 		rotation(p, -1);
-	mlx_set_mouse_pos(p->set->window, 540, 360);
+	mlx_set_mouse_pos(p->win->window, 540, 360);
 }

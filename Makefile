@@ -6,7 +6,7 @@
 #    By: aranger <aranger@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/31 17:54:43 by nledent           #+#    #+#              #
-#    Updated: 2024/04/13 19:20:38 by aranger          ###   ########.fr        #
+#    Updated: 2024/04/13 21:05:54 by aranger          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,8 +47,6 @@ SRCS			= 	\
 					utils/utils.c \
 					utils/utils_lst.c \
 					main.c \
-					fct_hook.c \
-					REPLACE_parsing.c \
 					print_map/draw_minimap.c \
 					print_map/utils.c \
 					print_map/minimap_player.c \
