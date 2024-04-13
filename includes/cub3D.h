@@ -6,7 +6,7 @@
 /*   By: aranger <aranger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 13:40:47 by aranger           #+#    #+#             */
-/*   Updated: 2024/04/13 19:10:04 by aranger          ###   ########.fr       */
+/*   Updated: 2024/04/13 19:56:25 by aranger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ typedef struct s_player
 	double	dir_y;
 	double	plane_x;
 	double	plane_y;
-	int		w_map;
-	int		h_map;
+	//int		w_map;
+//	int		h_map;
 }			t_player;
 
 typedef struct s_window_settings

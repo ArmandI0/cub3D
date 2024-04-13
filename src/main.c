@@ -6,7 +6,7 @@
 /*   By: aranger <aranger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 13:26:12 by aranger           #+#    #+#             */
-/*   Updated: 2024/04/13 18:29:44 by aranger          ###   ########.fr       */
+/*   Updated: 2024/04/13 19:59:58 by aranger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,12 @@ void	test_minimap(t_window_settings *set, t_params *param)
 {
 	display_minimap(set, param->map);
 }
+
+// static void	init_game(void)
+// {
+
+	
+// }
 
 int	main(int argc, const char **argv)
 {
