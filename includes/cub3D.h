@@ -6,7 +6,7 @@
 /*   By: aranger <aranger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 13:40:47 by aranger           #+#    #+#             */
-/*   Updated: 2024/04/13 20:39:54 by aranger          ###   ########.fr       */
+/*   Updated: 2024/04/14 16:47:02 by aranger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,27 @@ typedef	struct s_coord
 typedef struct s_map
 {
 	char	**map2d;
-	t_coord	player;
-	t_coord	dir_vector;
 	int		w_map;
 	int		h_map;
 }				t_map;
+
+typedef struct s_var_raycasting
+{
+	double	ray_dir_x;
+	double	ray_dir_y;
+	int		pos_x;
+	int		pos_y;
+	int		step_x;
+	int		step_y;
+	double	dt_x;
+	double	dt_y;
+	double	side_dist_x;
+	double	side_dist_y;
+	double	perp_dist;
+	int		start;
+	int		end;
+}			t_var_raycasting;
+
 
 typedef enum cb_errors
 {
@@ -149,5 +165,6 @@ void	cursor_fct(double xpos, double ypos, void *param);
 void	init_command(t_params *game);
 void	exit_fct(t_params *param);
 void	rotation(t_params *p, double step);
+t_bool  raycasting_1(t_params *game, t_window_settings *set, t_player *p);
 
 #endif

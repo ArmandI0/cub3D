@@ -6,7 +6,7 @@
 /*   By: aranger <aranger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 13:26:12 by aranger           #+#    #+#             */
-/*   Updated: 2024/04/13 21:01:28 by aranger          ###   ########.fr       */
+/*   Updated: 2024/04/14 17:10:52 by aranger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,8 @@ int	main(int argc, const char **argv)
 
 	check_args(argc, argv);
 	game = init_game(argv);
-	raycasting(game, game->win, game->player);
+	//raycasting(game, game->win, game->player);
+	raycasting_1(game, game->win, game->player);
 	display_minimap(game);
 	init_command(game);
 	mlx_loop(game->win->window);
