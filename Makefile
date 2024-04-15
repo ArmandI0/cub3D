@@ -6,7 +6,7 @@
 #    By: aranger <aranger@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/31 17:54:43 by nledent           #+#    #+#              #
-#    Updated: 2024/04/13 18:02:26 by aranger          ###   ########.fr        #
+#    Updated: 2024/04/14 16:48:05 by aranger          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,14 +47,16 @@ SRCS			= 	\
 					utils/utils.c \
 					utils/utils_lst.c \
 					main.c \
-					fct_hook.c \
-					REPLACE_parsing.c \
 					print_map/draw_minimap.c \
 					print_map/utils.c \
-					manage_player/minimap_player.c \
-					command/key_hook.c \
-					manage_player/init_player.c \
+					print_map/minimap_player.c \
+					command/keyboard.c \
+					raycasting/init_player.c \
 					command/mouse.c \
+					command/command.c \
+					utils/exit_fct.c \
+					command/move_player.c \
+					raycasting/raycasting_aranger.c \
 
 SRC				= $(addprefix src/, $(SRCS))
 OBJS			= $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)

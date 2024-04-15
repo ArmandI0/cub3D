@@ -6,7 +6,7 @@
 /*   By: aranger <aranger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 13:26:12 by aranger           #+#    #+#             */
-/*   Updated: 2024/04/13 17:42:33 by aranger          ###   ########.fr       */
+/*   Updated: 2024/04/14 17:10:52 by aranger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,51 +62,42 @@ void	ft_error(t_window_settings *set)
 	exit(EXIT_FAILURE);
 }
 
-void	test_minimap(t_window_settings *set, t_params *param)
+static t_params	*init_game(const char **argv)
 {
-	display_minimap(set, param->map);
+	t_params			*game;
+	t_window_settings	*win;
+
+	game = ft_calloc(1, sizeof(t_params));
+	if (game == NULL)
+		exit(1);
+	win = ft_calloc(1, sizeof(t_window_settings));
+	if (win == NULL)
+		exit_fct(game);
+	game->win = win;
+	map_file_parsing(game, argv[1]);
+	win->window = mlx_init(WIDTH, HEIGHT, "cub3D", true);
+	if (!win->window)
+		exit_fct(game);
+	win->img = set_img(win);
+	game->player = init_new_players('N', 20.5, 11.5);
+	return (game);
 }
 
 int	main(int argc, const char **argv)
 {
 	t_params			*game;
-	t_window_settings	*set;
 
 	check_args(argc, argv);
-	game = ft_calloc(1, sizeof(t_params));
-	if (game == NULL)
-	{
-		perror("Error\n");
-		return (1);
-	}
-	map_file_parsing(game, argv[1]);
-	set = ft_calloc(1, sizeof(t_window_settings));
-	if (set == NULL)
-		return (0);
-	set->window = mlx_init(WIDTH, HEIGHT, "cub3D", true);
-	if (!set->window)
-	{
-		ft_error(set);
-		return (EXIT_FAILURE);
-	}
-	// print_map(game->head_list_lines);
-	// ft_printf_fd(1, "-----MAP TAB----\n");
-	//print_map_tab(game->map->map2d);
-	game->set = set;
-	set->img = set_img(set);
-	game->player = init_new_players('N', 20.5, 11.5);
-	set->player = game->player;
-	raycasting(game, set, game->player);
-	test_minimap(set, game);
-	mlx_key_hook(set->window, &my_keyhook, game);
-	mlx_set_cursor_mode(set->window, MLX_MOUSE_HIDDEN);
-	mlx_cursor_hook(set->window, &cursor_fct, game);
-	mlx_loop(set->window);
-	mlx_resize_hook(set->window, &resize_mlx, set);
-	mlx_close_hook(set->window, &close_fct, set);
-	mlx_terminate(set->window);
+	game = init_game(argv);
+	//raycasting(game, game->win, game->player);
+	raycasting_1(game, game->win, game->player);
+	display_minimap(game);
+	init_command(game);
+	mlx_loop(game->win->window);
+	mlx_resize_hook(game->win->window, &resize_mlx, game->win);
+	mlx_close_hook(game->win->window, &close_fct, game->win);
+	//mlx_terminate(game->win->window);
 	free_game(game);
-	free(set);
 	return (0);
 }
 

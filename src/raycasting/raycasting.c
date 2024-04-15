@@ -6,7 +6,7 @@
 /*   By: aranger <aranger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 18:52:01 by nledent           #+#    #+#             */
-/*   Updated: 2024/04/12 16:04:58 by aranger          ###   ########.fr       */
+/*   Updated: 2024/04/14 17:24:09 by aranger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ static void	draw_ver_line(int pos_x_vertline, int	drawStart, int	drawEnd, t_para
 	  			color = color / 2;
 		}
 		mlx_put_pixel(set->img, pos_x_vertline, y, color);
-		//ft_printf_fd(2, "pixel x : %d y : %d, color RGB %d,%d,%d\n", pos_x_vertline, y, color>>16, color >> 8 & 255, color & 255);
 		y++;
 	}
 }

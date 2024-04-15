@@ -6,7 +6,7 @@
 /*   By: aranger <aranger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 17:56:50 by nledent           #+#    #+#             */
-/*   Updated: 2024/04/09 14:35:47 by aranger          ###   ########.fr       */
+/*   Updated: 2024/04/15 12:08:15 by aranger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,19 @@ void	free_path_textures(t_params *game)
 
 void	free_game(t_params *game)
 {
+	if (game->win != NULL)
+	{
+		mlx_terminate(game->win->window);
+		free(game->win);
+	}
 	free_lines_list(game->head_list_lines);
 	free_path_textures(game);
-	free_split(game->map->map2d);
+	if (game->map != NULL)
+	{
+		free_split(game->map->map2d);
+		free(game->map);
+	}
+	if (game->player != NULL)
+		free(game->player);
 	free(game);
 }
