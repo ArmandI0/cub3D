@@ -6,7 +6,7 @@
 /*   By: aranger <aranger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 21:49:25 by aranger           #+#    #+#             */
-/*   Updated: 2024/04/14 17:31:06 by aranger          ###   ########.fr       */
+/*   Updated: 2024/04/15 12:13:08 by aranger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,6 @@ static void	draw_ver_line(t_params *game, t_var_raycasting *var, int x_position,
 	int	y;
 
 	y = 0;
-	printf("start = %d || end = %d\n", var->start, var->end);
 	while (y < HEIGHT)
 	{
 		if (y <  var->start)
