@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aranger <aranger@student.42.fr>            +#+  +:+       +#+         #
+#    By: nledent <nledent@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/31 17:54:43 by nledent           #+#    #+#              #
-#    Updated: 2024/04/19 12:49:42 by aranger          ###   ########.fr        #
+#    Updated: 2024/04/19 15:13:55 by nledent          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ HEADERS			= -I ./include -I $(LIBMLX)/include
 #-SRC-#
 
 SRCS			= 	\
+					main.c \
 					map_parsing/parsing.c \
 					map_parsing/extract_textures_path.c \
 					map_parsing/extract_colors_data.c \
@@ -46,18 +47,20 @@ SRCS			= 	\
 					utils/colors.c \
 					utils/utils.c \
 					utils/utils_lst.c \
+					utils/exit_fct.c \
 					sprites/anim_init.c \
 					sprites/anim_hands.c \
-					main.c \
+					sprites/display_sprites.c \
+					sprites/load_sprites.c \
 					print_map/draw_minimap.c \
 					print_map/minimap_player.c \
-					command/keyboard.c \
 					raycasting/init_player.c \
+					raycasting/draw_ver_line.c \
+					raycasting/raycasting.c \
+					command/keyboard.c \
 					command/mouse.c \
 					command/command.c \
-					utils/exit_fct.c \
 					command/move_player.c \
-					raycasting/raycasting.c \
 
 SRC				= $(addprefix src/, $(SRCS))
 OBJS			= $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
