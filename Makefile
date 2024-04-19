@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nledent <nledent@student.42.fr>            +#+  +:+       +#+         #
+#    By: aranger <aranger@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/31 17:54:43 by nledent           #+#    #+#              #
-#    Updated: 2024/04/19 15:13:55 by nledent          ###   ########.fr        #
+#    Updated: 2024/04/19 16:20:05 by aranger          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,10 +69,10 @@ D_OBJS			= mkdir -p $(@D)
 #-BONUS-#
 
 SRCS_BONUS		=	\
-					command/command_bonus_bonus.c \
-					command/keyboard_bonus_bonus.c \
-					command/mouse_bonus_bonus.c \
-					command/move_player_bonus_bonus.c \
+					command/command_bonus.c \
+					command/keyboard_bonus.c \
+					command/mouse_bonus.c \
+					command/move_player_bonus.c \
 					map_parsing/check_walls_bonus.c \
 					map_parsing/extract_colors_data_bonus.c \
 					map_parsing/extract_file_bonus.c \
@@ -83,14 +83,18 @@ SRCS_BONUS		=	\
 					map_parsing/rgb_to_int_bonus.c \
 					print_map/draw_minimap_bonus.c \
 					print_map/minimap_player_bonus.c \
-					print_map/utils_bonus.c \
+					raycasting/draw_ver_line_bonus.c \
 					raycasting/init_player_bonus.c \
-					raycasting/raycasting_aranger_bonus.c \
 					raycasting/raycasting_bonus.c \
+					sprites/anim_hands_bonus.c \
+					sprites/anim_init_bonus.c \
+					sprites/display_sprites_bonus.c \
+					sprites/load_sprites_bonus.c \
 					utils/check_args_bonus.c \
 					utils/colors_bonus.c \
 					utils/exit_fct_bonus.c \
 					utils/free_functions_bonus.c \
+					utils/free_functions2_bonus.c \
 					utils/print_errors_bonus.c \
 					utils/utils_bonus.c \
 					utils/utils_lst_bonus.c \
