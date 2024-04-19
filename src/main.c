@@ -6,7 +6,7 @@
 /*   By: aranger <aranger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 13:26:12 by aranger           #+#    #+#             */
-/*   Updated: 2024/04/19 14:39:50 by aranger          ###   ########.fr       */
+/*   Updated: 2024/04/19 16:10:30 by aranger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,23 @@ void	ft_error(t_window_settings *set)
 	exit(EXIT_FAILURE);
 }
 
+static void	set_map_w_and_h(t_params *game)
+{
+	int	i;
+
+	i = 0;
+	game->map->w_map = ft_strlen(game->map->map2d[0]);
+	while (game->map->map2d[i] != NULL)
+	{
+		i++;
+	}
+	game->map->h_map = i;
+}
+
 static void	get_coord_start(t_params *game, char **map2d)
 {
-	int		x;
-	int		y;
+	int	x;
+	int	y;
 
 	y = 0;
 	while (map2d[y] != NULL)
@@ -97,6 +110,7 @@ static t_params	*init_game(const char **argv)
 		exit_fct(game);
 	game->win = win;
 	map_file_parsing(game, argv[1]);
+	set_map_w_and_h(game);
 	get_coord_start(game, game->map->map2d);
 	win->window = mlx_init(WIDTH, HEIGHT, "cub3D", true);
 	if (!win->window)

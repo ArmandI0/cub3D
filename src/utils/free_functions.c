@@ -6,7 +6,7 @@
 /*   By: nledent <nledent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 17:56:50 by nledent           #+#    #+#             */
-/*   Updated: 2024/04/19 11:56:56 by nledent          ###   ########.fr       */
+/*   Updated: 2024/04/19 14:43:31 by nledent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,12 @@ void	free_path_textures(t_params *game)
 void	free_game(t_params *game)
 {
 	free_img_anim(game);
+	free_img_sprites(game);
 	free_textures(game);
 	if (game->win != NULL)
 	{
-		mlx_terminate(game->win->window);
+		if (game->win->window != NULL)
+			mlx_terminate(game->win->window);
 		free(game->win);
 	}
 	free_lines_list(game->head_list_lines);

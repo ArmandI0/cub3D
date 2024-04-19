@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   anim.c                                             :+:      :+:    :+:   */
+/*   anim_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nledent <nledent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 13:26:12 by aranger           #+#    #+#             */
-/*   Updated: 2024/04/19 11:54:39 by nledent          ###   ########.fr       */
+/*   Updated: 2024/04/19 14:51:59 by nledent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,21 +37,20 @@ static void		put_anim_pattern(t_params *game)
 	game->anim_p_pattern[8] = 1;
 }
 
-static void	del_txt_tmp(mlx_texture_t *tmp[5])
+void	del_txt_tmp(mlx_texture_t **tmp, int nb)
 {
-	if (tmp[0])
-		mlx_delete_texture(tmp[0]);
-	if (tmp[1])
-		mlx_delete_texture(tmp[1]);
-	if (tmp[2])
-		mlx_delete_texture(tmp[2]);
-	if (tmp[3])
-		mlx_delete_texture(tmp[3]);
-	if (tmp[4])
-		mlx_delete_texture(tmp[4]);
+	int	i;
+
+	i = 0;
+	while (i < nb)
+	{
+		if (tmp[i])
+			mlx_delete_texture(tmp[i]);
+		i++;
+	}
 }
 
-static t_bool	load_sprites(t_params *game)
+static t_bool	load_anim(t_params *game)
 {
 	mlx_texture_t	*tmp[5];
 	mlx_t			*mlx;
@@ -70,11 +69,11 @@ static t_bool	load_sprites(t_params *game)
 		game->anim_p[3] = mlx_texture_to_image(mlx, tmp[3]);
 		game->anim_p[4] = mlx_texture_to_image(mlx, tmp[4]);
 		put_anim_pattern(game);
-		del_txt_tmp(tmp);
+		del_txt_tmp(tmp, 5);
 	}
 	else
 	{
-		del_txt_tmp(tmp);
+		del_txt_tmp(tmp, 5);
 		return (FALSE);
 	}
 	return (TRUE);
@@ -83,6 +82,8 @@ static t_bool	load_sprites(t_params *game)
 t_bool	load_images(t_params *game)
 {
 	if (load_textures(game) == FALSE)
+		return (FALSE);
+	if (load_anim(game) == FALSE)
 		return (FALSE);
 	if (load_sprites(game) == FALSE)
 		return (FALSE);

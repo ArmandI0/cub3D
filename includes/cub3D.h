@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aranger <aranger@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nledent <nledent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 13:40:47 by aranger           #+#    #+#             */
-/*   Updated: 2024/04/19 12:59:54 by aranger          ###   ########.fr       */
+/*   Updated: 2024/04/19 15:54:23 by nledent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,14 @@ typedef struct s_startpoint
 	t_param_type	dir;
 }		t_startpoint;
 
+typedef struct s_sprites
+{
+	mlx_image_t	*img[2];
+	int			nb_sprites;
+	int			*pos_x;
+	int			*pos_y;
+}		t_sprites;
+
 typedef struct s_params
 {
 	t_map		*map;
@@ -122,6 +130,7 @@ typedef struct s_params
 	char		*path_texture[4];
 	mlx_texture_t	*texture[4];
 	mlx_image_t	*anim_p[5];
+	t_sprites	sprites;
 	int			anim_p_pattern[9];
 	int			ceiling_color;
 	int			floor_color;
@@ -142,6 +151,8 @@ t_bool		is_line_empty(t_list *last);
 t_bool		map_to_tab(t_params *game, t_list *head);
 t_bool		check_walls(t_params *game);
 t_bool		load_images(t_params *game);
+t_bool		load_sprites(t_params *game);
+
 
 /* EXEC FUNCTIONS */
 
@@ -157,7 +168,10 @@ void		display_square(int start_x, int start_y, int size, mlx_image_t *img, uint3
 void		print_player(t_params *p);
 t_player	*init_new_players(t_param_type direction, double x, double y);
 void		display_hands(t_params *game);
-
+void		display_sprites(t_params *game);
+void		del_txt_tmp(mlx_texture_t **tmp, int nb);
+void		draw_ver_line(t_params *game, t_var_raycasting *var, int x_position,  int side);
+void		draw_sprites(double	dist_buffer[WIDTH], t_sprites sprites, t_player *p);
 
 /* FREE FUNCTIONS */
 void	free_game(t_params *game);
@@ -165,7 +179,7 @@ void	free_path_textures(t_params *game);
 void	free_el_list(t_list *element);
 void	free_textures(t_params *game);
 void	free_img_anim(t_params *game);
-
+void	free_img_sprites(t_params *game);
 
 /* RAY CASTING FUNCTIONS*/
 t_bool  raycasting(t_params *game, t_window_settings *set, t_player *p);
