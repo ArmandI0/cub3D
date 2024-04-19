@@ -6,7 +6,7 @@
 /*   By: aranger <aranger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 14:49:38 by aranger           #+#    #+#             */
-/*   Updated: 2024/04/18 15:38:30 by aranger          ###   ########.fr       */
+/*   Updated: 2024/04/19 14:36:16 by aranger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void print_minimap(t_map *minimap, mlx_image_t *img, t_player *p)
 					put_pixel(img, j, i, convert_color(0xA09C9C)); //display_square(j * size, i * size, size, set->minimap_img, convert_color(0x00D7FF), TRUE );
 				else if (minimap->map2d[(int)round(y)][(int)round(x)] == '0')
 					put_pixel(img, j, i, convert_color(0xFFFFFF));//display_square(j * size, i * size, size, set->minimap_img,convert_color(0xFFCF00), TRUE );
-				else if (minimap->map2d[(int)round(y)][(int)round(x)] == 'N')
+				else if (ft_strchr("NSEW", minimap->map2d[(int)round(y)][(int)round(x)]) != 0)
 					put_pixel(img, j, i, convert_color(0xFFFFFF));//display_square(j * size, i * size, size, set->minimap_img, convert_color(0x00D7FF), TRUE);
 				else
 					put_pixel(img, j, i, convert_color(0xA09C9C));//display_square(j * size, i * size, size, set->minimap_img, convert_color(0x000000), FALSE);
