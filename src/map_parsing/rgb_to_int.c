@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rgb_to_int.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aranger <aranger@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nledent <nledent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 17:55:29 by nledent           #+#    #+#             */
-/*   Updated: 2024/04/09 14:24:08 by aranger          ###   ########.fr       */
+/*   Updated: 2024/04/18 16:28:46 by nledent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static int	str_rgb_to_int(char *rgb_str, char *set)
 		color = -1;
 	free_split(split_rgb);
 	free(rgb_trim);
-	return (color);
+	return (convert_color(color));
 }
 
 t_errors	extract_rgb_str(t_params *game, t_list *color,

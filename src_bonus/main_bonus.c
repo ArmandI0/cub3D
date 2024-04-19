@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aranger <aranger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 13:26:12 by aranger           #+#    #+#             */
-/*   Updated: 2024/04/19 13:12:51 by aranger          ###   ########.fr       */
+/*   Updated: 2024/04/15 14:13:09 by aranger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ mlx_image_t	*set_img(t_window_settings *set)
 	return (NULL);
 }
 
-/* void	print_map(t_list *head)
+void	print_map(t_list *head)
 {
 	t_list	*next;
 
@@ -54,34 +54,12 @@ void	print_map_tab(char **map)
 		ft_printf_fd(1, "%s\n", map[i]);
 		i++;
 	}
-} */
+}
 
 void	ft_error(t_window_settings *set)
 {
 	free(set);
 	exit(EXIT_FAILURE);
-}
-
-static void	get_coord_start(t_params *game, char **map2d)
-{
-	int		x;
-	int		y;
-
-	y = 0;
-	while (map2d[y] != NULL)
-	{
-		x = 0;
-		while (map2d[y][x] != 0)
-		{
-			if (ft_strchr("NSEW", map2d[y][x]) != 0)
-			{
-				game->start_p.x = (double)x + 0.5;
-				game->start_p.y = (double)y + 0.5;
-			}
-			x++;
-		}
-		y++;
-	}
 }
 
 static t_params	*init_game(const char **argv)
@@ -92,18 +70,16 @@ static t_params	*init_game(const char **argv)
 	game = ft_calloc(1, sizeof(t_params));
 	if (game == NULL)
 		exit(1);
+	map_file_parsing(game, argv[1]);
 	win = ft_calloc(1, sizeof(t_window_settings));
 	if (win == NULL)
 		exit_fct(game);
 	game->win = win;
-	map_file_parsing(game, argv[1]);
-	get_coord_start(game, game->map->map2d);
 	win->window = mlx_init(WIDTH, HEIGHT, "cub3D", true);
 	if (!win->window)
 		exit_fct(game);
 	win->img = set_img(win);
-	game->player = init_new_players(game->start_p.dir, game->start_p.x,
-			game->start_p.y);
+	game->player = init_new_players('N', 20.5, 11.5);
 	return (game);
 }
 
@@ -113,16 +89,14 @@ int	main(int argc, const char **argv)
 
 	check_args(argc, argv);
 	game = init_game(argv);
-	if (load_images(game) == FALSE)
-		exit_fct(game);
 	raycasting(game, game->win, game->player);
-	display_hands(game);
+	raycasting_1(game, game->win, game->player);
 	display_minimap(game);
 	init_command(game);
 	mlx_loop(game->win->window);
 	mlx_resize_hook(game->win->window, &resize_mlx, game->win);
 	mlx_close_hook(game->win->window, &close_fct, game->win);
-	//mlx_terminate(game->win->window);
 	free_game(game);
 	return (0);
 }
+

@@ -2,7 +2,13 @@
   "files.associations": {
 	"cub3d.h": "c",
 	"functional": "c",
-	"typeinfo": "c"
+	"typeinfo": "c",
+	"array": "c",
+	"string_view": "c",
+	"initializer_list": "c",
+	"ranges": "c",
+	"span": "c",
+	"utility": "c"
 },
   "C_Cpp_Runner.msvcBatchPath": "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Auxiliary/Build/vcvarsall.bat",
   "C_Cpp_Runner.cCompilerPath": "gcc",

@@ -6,7 +6,7 @@
 /*   By: aranger <aranger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 13:40:47 by aranger           #+#    #+#             */
-/*   Updated: 2024/04/14 16:47:02 by aranger          ###   ########.fr       */
+/*   Updated: 2024/04/19 12:59:54 by aranger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@
 # include <math.h>
 # include <stdlib.h>
 # include <stdio.h>
-# define WIDTH 1080
+# define WIDTH 1024
 # define HEIGHT 720
+# define EAST_WEST 0
+# define NORTH_SOUTH 1
 
 typedef int	t_bool;
 
@@ -104,6 +106,13 @@ typedef enum cb_param_type
 	PARAM_C,
 }			t_param_type;
 
+typedef struct s_startpoint
+{
+	double				x;
+	double				y;
+	t_param_type	dir;
+}		t_startpoint;
+
 typedef struct s_params
 {
 	t_map		*map;
@@ -111,9 +120,13 @@ typedef struct s_params
 	t_player		*player;
 	int			nb_map_lines;
 	char		*path_texture[4];
+	mlx_texture_t	*texture[4];
+	mlx_image_t	*anim_p[5];
+	int			anim_p_pattern[9];
 	int			ceiling_color;
 	int			floor_color;
 	t_list		*head_list_lines;
+	t_startpoint	start_p;
 }			t_params;
 
 /* PARSING FUNCTIONS */
@@ -128,6 +141,7 @@ t_errors	extract_map(t_params *game);
 t_bool		is_line_empty(t_list *last);
 t_bool		map_to_tab(t_params *game, t_list *head);
 t_bool		check_walls(t_params *game);
+t_bool		load_images(t_params *game);
 
 /* EXEC FUNCTIONS */
 
@@ -139,32 +153,40 @@ void		close_fct(void *param);
 t_map *		init_argument(void); // init the data structure
 void 		display_minimap(t_params *p);
 void		ft_error(t_window_settings *set);
-uint32_t	convert_color(unsigned int color);
 void		display_square(int start_x, int start_y, int size, mlx_image_t *img, uint32_t color, t_bool border);
 void		print_player(t_params *p);
+t_player	*init_new_players(t_param_type direction, double x, double y);
+void		display_hands(t_params *game);
+
 
 /* FREE FUNCTIONS */
 void	free_game(t_params *game);
 void	free_path_textures(t_params *game);
 void	free_el_list(t_list *element);
+void	free_textures(t_params *game);
+void	free_img_anim(t_params *game);
+
 
 /* RAY CASTING FUNCTIONS*/
-t_bool  raycasting(t_params *game, t_window_settings *set, t_player *player);
+t_bool  raycasting(t_params *game, t_window_settings *set, t_player *p);
+void	rotation(t_params *p, double step);
+void	translate_player_l_to_r(t_player *player, double step,  char** map);
+void 	translate_player_forward(t_player *player, double step, char** map);
+void 	rotate_player(t_player *player, double angle);
 
 /* UTILS FUNCTIONS */
 void	check_args(int argc, const char **argv);
 void	print_error(t_errors error);
-int		rgb_to_int(unsigned char red, unsigned char green, unsigned char blue);
 void	del_el_list(t_list *element, t_params *game);
-t_player	*init_new_players(char direction, double x, double y);
-void rotate_player(t_player *player, double angle);
 mlx_image_t	*set_img(t_window_settings *set);
-void 	translate_player_forward(t_player *player, double step, char** map);
-void	translate_player_l_to_r(t_player *player, double step,  char** map);
 void	cursor_fct(double xpos, double ypos, void *param);
 void	init_command(t_params *game);
 void	exit_fct(t_params *param);
 void	rotation(t_params *p, double step);
 t_bool  raycasting_1(t_params *game, t_window_settings *set, t_player *p);
+mlx_image_t	*set_img(t_window_settings *set);
+int		rgb_to_int(unsigned char red, unsigned char green, unsigned char blue);
+int		get_color_px_txt(uint32_t x, uint32_t y, mlx_texture_t *txt);
+uint32_t	convert_color(unsigned int color);
 
 #endif

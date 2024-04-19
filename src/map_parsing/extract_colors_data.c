@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   extract_colors_data.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aranger <aranger@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nledent <nledent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 17:55:29 by nledent           #+#    #+#             */
-/*   Updated: 2024/04/09 14:27:13 by aranger          ###   ########.fr       */
+/*   Updated: 2024/04/18 16:25:36 by nledent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ static void	put_color_default_if_null(t_params *game, t_list *color_str,
 	if (color_str == NULL)
 	{
 		if (color == PARAM_F)
-			game->floor_color = rgb_to_int(200, 150, 100);
+			game->floor_color = convert_color(rgb_to_int(200, 150, 100));
 		else if (color == PARAM_C)
-			game->ceiling_color = rgb_to_int(150, 200, 255);
+			game->ceiling_color = convert_color(rgb_to_int(150, 200, 255));
 	}
 }
 

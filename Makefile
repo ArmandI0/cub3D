@@ -6,7 +6,7 @@
 #    By: aranger <aranger@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/31 17:54:43 by nledent           #+#    #+#              #
-#    Updated: 2024/04/14 16:48:05 by aranger          ###   ########.fr        #
+#    Updated: 2024/04/19 12:49:42 by aranger          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,16 +39,17 @@ SRCS			= 	\
 					map_parsing/rgb_to_int.c \
 					map_parsing/map_to_tab.c \
 					map_parsing/check_walls.c \
-					raycasting/raycasting.c \
 					utils/check_args.c \
 					utils/print_errors.c \
 					utils/free_functions.c \
+					utils/free_functions2.c \
 					utils/colors.c \
 					utils/utils.c \
 					utils/utils_lst.c \
+					sprites/anim_init.c \
+					sprites/anim_hands.c \
 					main.c \
 					print_map/draw_minimap.c \
-					print_map/utils.c \
 					print_map/minimap_player.c \
 					command/keyboard.c \
 					raycasting/init_player.c \
@@ -56,11 +57,45 @@ SRCS			= 	\
 					command/command.c \
 					utils/exit_fct.c \
 					command/move_player.c \
-					raycasting/raycasting_aranger.c \
+					raycasting/raycasting.c \
 
 SRC				= $(addprefix src/, $(SRCS))
 OBJS			= $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 D_OBJS			= mkdir -p $(@D)
+
+#-BONUS-#
+
+SRCS_BONUS		=	\
+					command/command_bonus_bonus.c \
+					command/keyboard_bonus_bonus.c \
+					command/mouse_bonus_bonus.c \
+					command/move_player_bonus_bonus.c \
+					map_parsing/check_walls_bonus.c \
+					map_parsing/extract_colors_data_bonus.c \
+					map_parsing/extract_file_bonus.c \
+					map_parsing/extract_map_bonus.c \
+					map_parsing/extract_textures_path_bonus.c \
+					map_parsing/map_to_tab_bonus.c \
+					map_parsing/parsing_bonus.c \
+					map_parsing/rgb_to_int_bonus.c \
+					print_map/draw_minimap_bonus.c \
+					print_map/minimap_player_bonus.c \
+					print_map/utils_bonus.c \
+					raycasting/init_player_bonus.c \
+					raycasting/raycasting_aranger_bonus.c \
+					raycasting/raycasting_bonus.c \
+					utils/check_args_bonus.c \
+					utils/colors_bonus.c \
+					utils/exit_fct_bonus.c \
+					utils/free_functions_bonus.c \
+					utils/print_errors_bonus.c \
+					utils/utils_bonus.c \
+					utils/utils_lst_bonus.c \
+					main_bonus.c \
+
+SRC_BONUS		= $(addprefix src_bonus/, $(SRCS_BONUS))
+OBJS_BONUS		= $(SRC_BONUS:$(SRC_BONUS_DIR)/%.c=$(OBJ_BONUS_DIR)/%.o)
+D_OBJS_BONUS	= mkdir -p $(@D)
 
 #-UTILS-#
 

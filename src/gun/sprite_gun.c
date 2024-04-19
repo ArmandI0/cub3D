@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mouse.c                                            :+:      :+:    :+:   */
+/*   sprite_gun.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aranger <aranger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/13 17:17:03 by aranger           #+#    #+#             */
-/*   Updated: 2024/04/19 13:02:49 by aranger          ###   ########.fr       */
+/*   Created: 2024/04/17 21:26:03 by aranger           #+#    #+#             */
+/*   Updated: 2024/04/18 16:10:45 by aranger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D.h"
 
-void	cursor_fct(double xpos, double ypos, void *param)
+xpm_t	**sprite_gun(void)
 {
-	t_params		*p;
-	
-	p = param;
-	(void) ypos;
-	if (xpos > 540)
-	{
-		rotation(p, 0.5);
-	}
-	else if (xpos < 540)
-		rotation(p, -0.5);
-	mlx_set_mouse_pos(p->win->window, 540, 360);
+	xpm_t	**gun;
+
+	gun = malloc(sizeof(xpm_t) * 4);
+
+	gun[0] = mlx_load_xpm42("/texture/gun1.xpm");
+	gun[1] = mlx_load_xpm42("/texture/gun2.xpm");
+	gun[2] = mlx_load_xpm42("/texture/gun3.xpm");
+	gun[3] = mlx_load_xpm42("/texture/gun4.xpm");
+	return(gun);
 }

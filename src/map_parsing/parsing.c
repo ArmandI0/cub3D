@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aranger <aranger@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nledent <nledent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 17:55:29 by nledent           #+#    #+#             */
-/*   Updated: 2024/04/09 14:24:06 by aranger          ###   ########.fr       */
+/*   Updated: 2024/04/19 11:12:46 by nledent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,31 +33,45 @@ static t_errors	check_if_empty_lines_in_the_map(t_params *game)
 	return (0);
 }
 
+static void	record_startpoint(char *startpoint, t_params *game)
+{
+	if (*startpoint == 'N')
+		game->start_p.dir = PARAM_NO;
+	else if (*startpoint == 'S')
+		game->start_p.dir = PARAM_SO;
+	else if (*startpoint == 'E')
+		game->start_p.dir = PARAM_EA;
+	else if (*startpoint == 'W')
+		game->start_p.dir = PARAM_WE;
+}
+
 static t_errors	check_startpoints(t_params *game)
 {
 	t_list	*tmp;
 	int		nb_startpoint;
-	int		i;
+	int		x;
 
 	nb_startpoint = 0;
 	tmp = game->head_list_lines;
 	while (tmp)
 	{
-		i = 0;
-		while (tmp->content != NULL && tmp->content[i] != 0)
+		x = 0;
+		while (tmp->content != NULL && tmp->content[x] != 0)
 		{
-			if (ft_strchr("NSEW", tmp->content[i]) != 0)
+			if (ft_strchr("NSEW", tmp->content[x]) != 0)
+			{
 				nb_startpoint ++;
+				record_startpoint(ft_strchr("NSEW", tmp->content[x]), game);
+			}
 			if (nb_startpoint > 1)
 				return (ER_TOO_MANY_STARTPOINT);
-			i++;
+			x++;
 		}
 		tmp = tmp->next;
 	}
 	if (nb_startpoint == 0)
 		return (ER_NO_STARTPOINT);
-	else
-		return (0);
+	return (0);
 }
 
 void	map_file_parsing(t_params *game, const char *filepath)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aranger <aranger@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nledent <nledent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 13:43:06 by aranger           #+#    #+#             */
-/*   Updated: 2024/04/13 19:57:56 by aranger          ###   ########.fr       */
+/*   Updated: 2024/04/15 21:27:31 by nledent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,18 @@ static t_player	*set_orientation(double dir_x, double dir_y,
 	return (new_player);
 }
 
-t_player	*init_new_players(char direction, double x, double y)
+t_player	*init_new_players(t_param_type direction, double x, double y)
 {
 	t_player	*new_player;
 
 	new_player = NULL;
-	if (direction == 'N')
+	if (direction == PARAM_NO)
 		new_player = set_orientation(0, -1, 0.66, 0);
-	else if (direction == 'S')
+	else if (direction == PARAM_SO)
 		new_player = set_orientation(0, 1, -0.66, 0);
-	else if (direction == 'W')
+	else if (direction == PARAM_WE)
 		new_player = set_orientation(-1, 0, 0, 0.66);
-	else if (direction == 'E')
+	else if (direction == PARAM_EA)
 		new_player = set_orientation(1, 0, 0, -0.66);
 	if (new_player != NULL)
 	{
