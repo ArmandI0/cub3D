@@ -6,7 +6,7 @@
 /*   By: aranger <aranger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 17:17:03 by aranger           #+#    #+#             */
-/*   Updated: 2024/04/19 16:19:03 by aranger          ###   ########.fr       */
+/*   Updated: 2024/04/20 13:33:37 by aranger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #include <sys/time.h>
 
-size_t	get_current_time(void)
+static size_t	get_current_time(void)
 {
 	struct timeval	time;
 
@@ -33,21 +33,16 @@ void	cursor_fct(double xpos, double ypos, void *param)
 	if (start_time == 0)
 		start_time = get_current_time();
 	if (time - start_time < 33)
-	{
-		printf("time %ld\n",time);
 		return ;
-	}
 	else
 	{
-		ft_printf_fd(2, "PAS DE RETURN C'EST MORT time = %d\n", time);
 		start_time = get_current_time();
 		p = param;
 		(void) ypos;
-		if (xpos > 540)
-			rotation(p, 2);
-		else if (xpos < 540)
-			rotation(p, -2);
-		mlx_set_mouse_pos(p->win->window, 540, 360);
-	}	
-
+		if (xpos > WIDTH / 2)
+			rotation(p, -5);
+		else if (xpos < WIDTH / 2)
+			rotation(p, 5);
+		mlx_set_mouse_pos(p->win->window, WIDTH / 2, HEIGHT / 2);
+	}
 }

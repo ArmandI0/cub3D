@@ -37,10 +37,10 @@ static void	translation_key(mlx_key_data_t	keydata, void *param)
 		translation(p, 0.1, TRUE);
 	if (keydata.key == MLX_KEY_A && (keydata.action == MLX_REPEAT || keydata.action == MLX_PRESS))
 		translation(p, -0.1, TRUE);
-	if (keydata.key == MLX_KEY_E && keydata.action == MLX_REPEAT)
-		rotation(p, 5);
-	if (keydata.key == MLX_KEY_Q && keydata.action == MLX_REPEAT)
+	if (keydata.key == MLX_KEY_RIGHT && keydata.action == MLX_REPEAT)
 		rotation(p, -5);
+	if (keydata.key == MLX_KEY_LEFT && keydata.action == MLX_REPEAT)
+		rotation(p, 5);
 }
 
 
