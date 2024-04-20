@@ -6,7 +6,7 @@
 /*   By: aranger <aranger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 13:40:47 by aranger           #+#    #+#             */
-/*   Updated: 2024/04/20 14:27:18 by aranger          ###   ########.fr       */
+/*   Updated: 2024/04/20 19:04:21 by aranger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # define WIDTH 1024
 # define HEIGHT 720
 /* minimap settings*/
-# define MINIMAP_SIZE 1350
+# define MINIMAP_SIZE 135
 # define MINIMAP_SQR_SIZE 15
 # define MINIMAP_SQR_NB 9
 # define EAST_WEST 0
