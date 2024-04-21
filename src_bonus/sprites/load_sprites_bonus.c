@@ -80,6 +80,7 @@ t_bool	load_sprites(t_params *game)
 		return (FALSE);
 	}
 	game->sprites.nb_sprites = count_nb_sprites(game->map->map2d);
+	game->sprites.nb_remaining = game->sprites.nb_sprites;
 	record_sprites_pos(game, game->sprites.nb_sprites, game->map->map2d);
 	return (TRUE);
 }

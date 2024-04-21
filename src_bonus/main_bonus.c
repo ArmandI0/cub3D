@@ -130,7 +130,12 @@ int	main(int argc, const char **argv)
 	if (load_images(game) == FALSE)
 		exit_fct(game);
 	init_times_displays(game);
-	display_all(game);
+	if (raycasting(game, game->win, game->player) == FALSE)
+		exit_fct(game);
+	printf("red %d\n", convert_color(rgb_to_int(255,0 , 0)));
+	display_minimap(game);
+	display_hands(game);
+	display_welcome(game->win->window, game);
 	init_command(game);
 	mlx_loop(game->win->window);
 	mlx_resize_hook(game->win->window, &resize_mlx, game->win);

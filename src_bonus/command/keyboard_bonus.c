@@ -1,28 +1,10 @@
 
 #include "../../includes/cub3D_bonus.h"
 
-static void	remove_sprite_if_collision(t_player *p, t_sprites sprites, t_params *game)
-{
-	int	i;
-
-	i = 0;
-	while (i < sprites.nb_sprites)
-	{
-		if (sprites.pos_x[i] == (int)(p->pos_x)
-			&& sprites.pos_y[i] == (int)(p->pos_y))
-		{
-			sprites.pos_x[i] = -1;
-			sprites.pos_y[i] = -1;
-			game->times.spagh_eaten = time_to_ms() + 3000;
-		}
-		i++;
-	}
-}
-
 void	rotation(t_params *p, double step)
 {
 	rotate_player(p->player, step);
-	remove_sprite_if_collision(p->player, p->sprites, p);
+	remove_sprite_collision(p->player, p->sprites, p);
 	display_all(p);
 }
 
@@ -33,7 +15,7 @@ static void translation(t_params *p, double step, t_bool tr)
 		translate_player_forward(p->player, step, p->map->map2d);
 	else
 		translate_player_l_to_r(p->player, step, p->map->map2d);
-	remove_sprite_if_collision(p->player, p->sprites, p);	
+	remove_sprite_collision(p->player, p->sprites, p);	
 	display_all(p);
 }
 

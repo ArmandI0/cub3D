@@ -56,6 +56,8 @@ void	free_path_textures(t_params *game)
 
 void	free_game(t_params *game)
 {
+	if (game->times.spagh_eaten)
+		free(game->times.spagh_eaten);
 	free_img_anim(game);
 	free_img_sprites(game);
 	free_textures(game);

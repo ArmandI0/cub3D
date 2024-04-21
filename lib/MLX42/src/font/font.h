@@ -13,7 +13,7 @@
 #ifndef FONT_H
 # define FONT_H
 # define FONT_WIDTH 10
-# define FONT_HEIGHT 40
+# define FONT_HEIGHT 20
 # include <stdint.h>
 
 // GIMP RGBA C-Source image dump (font.c)

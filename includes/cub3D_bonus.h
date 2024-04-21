@@ -128,15 +128,16 @@ typedef struct s_sprites
 {
 	mlx_image_t	*img[2];
 	int			nb_sprites;
+	int			nb_remaining;
 	int			*pos_x;
 	int			*pos_y;
 }		t_sprites;
 
 typedef struct s_display
 {
-	u_int64_t	spagh_eaten;
+	u_int64_t	*spagh_eaten;
 	u_int64_t	one_min;
-	u_int64_t	dead;
+	t_bool		dead;
 	u_int64_t	start_game;
 	u_int64_t	time_given;
 }		t_display;
@@ -179,6 +180,7 @@ t_bool		draw_sprites(double dist_buffer[WIDTH], t_sprites sprites, t_player *p, 
 void		get_pos_vert_sprite(t_coord_sprite_screen *s, t_coord sprite_matrix);
 void		get_pos_horiz_sprite(t_coord_sprite_screen *s, t_coord sprite_matrix);
 t_coord	get_pos_sprite_transformed(int i, t_player *p, t_sprites sprites, int *sprite_order);
+void		remove_sprite_collision(t_player *p, t_sprites sprites, t_params *game);
 
 /* EXEC FUNCTIONS */
 void		my_keyhook(mlx_key_data_t keydata, void *param);
@@ -232,5 +234,7 @@ void	display_infos(t_params *game);
 void	display_all(t_params *game);
 void	display_hands(t_params *game);
 void	display_sprites(t_params *game);
+void	display_welcome(mlx_t *mlx, t_params *game);
+void	display_success(mlx_t *mlx, t_params *game);
 
 #endif

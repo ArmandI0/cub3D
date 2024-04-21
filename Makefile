@@ -89,6 +89,7 @@ SRCS_BONUS		=	\
 					sprites/display_sprites_bonus.c \
 					sprites/coord_sprite_bonus.c \
 					sprites/load_sprites_bonus.c \
+					sprites/collision_sprites.c \
 					print_map/draw_minimap_bonus.c \
 					print_map/minimap_player_bonus.c \
 					raycasting/init_player_bonus.c \
