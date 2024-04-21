@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mouse.c                                            :+:      :+:    :+:   */
+/*   minimap_player.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aranger <aranger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/13 17:17:03 by aranger           #+#    #+#             */
-/*   Updated: 2024/04/19 13:02:49 by aranger          ###   ########.fr       */
+/*   Created: 2024/04/09 11:20:30 by aranger           #+#    #+#             */
+/*   Updated: 2024/04/17 16:21:24 by aranger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D_bonus.h"
 
-void	cursor_fct(double xpos, double ypos, void *param)
+void	print_player(t_params *p)
 {
-	t_params		*p;
+	mlx_image_t			*img;
+	t_window_settings	*win;
 	
-	p = param;
-	(void) ypos;
-	if (xpos > 540)
-	{
-		rotation(p, 0.5);
-	}
-	else if (xpos < 540)
-		rotation(p, -0.5);
-	mlx_set_mouse_pos(p->win->window, 540, 360);
+	win = p->win;
+	img = mlx_new_image(win->window, 50, 50);
+	if (!img || (mlx_image_to_window(win->window, img, p->player->pos_x * 10, p->player->pos_y * 10) < 0))
+		ft_error(win);
+	display_square(0, 0, 10,img, convert_color(0xFF0000), FALSE);
+	win->player_img = img;
 }

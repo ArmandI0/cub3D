@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit_fct.c                                         :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aranger <aranger@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nledent <nledent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/13 18:56:50 by aranger           #+#    #+#             */
-/*   Updated: 2024/04/13 20:24:07 by aranger          ###   ########.fr       */
+/*   Created: 2024/04/04 13:26:12 by aranger           #+#    #+#             */
+/*   Updated: 2024/04/21 17:05:01 by nledent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3D.h"
+#include "../includes/cub3D.h"
 
-void	exit_fct(t_params *param)
+void	display_all(t_params *game)
 {
-	if (param != NULL)
-		free_game(param);
-	exit(1);
+	if (raycasting(game, game->win, game->player) == FALSE)
+		exit_fct(game);
 }

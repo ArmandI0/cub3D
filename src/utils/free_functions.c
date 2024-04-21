@@ -56,8 +56,6 @@ void	free_path_textures(t_params *game)
 
 void	free_game(t_params *game)
 {
-	free_img_anim(game);
-	free_img_sprites(game);
 	free_textures(game);
 	if (game->win != NULL)
 	{
