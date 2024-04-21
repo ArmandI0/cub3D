@@ -6,7 +6,7 @@
 /*   By: aranger <aranger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 19:16:09 by aranger           #+#    #+#             */
-/*   Updated: 2024/04/20 13:22:12 by aranger          ###   ########.fr       */
+/*   Updated: 2024/04/21 14:25:36 by aranger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ void translate_player_forward(t_player *player, double step, char** map)
 
     new_pos_x = player->pos_x + (player->dir_x * step);
     new_pos_y = player->pos_y + (player->dir_y * step);
-	hit_x = player->pos_x + (player->dir_x * step * 3);
-	hit_y = player->pos_y + (player->dir_y * step * 3);
+	hit_x = player->pos_x + (player->dir_x * step * 5);
+	hit_y = player->pos_y + (player->dir_y * step * 5);
 	if (map[(int)hit_y][(int)hit_x] == '1')
 		return ;
     player->pos_x = new_pos_x;
@@ -60,8 +60,8 @@ void translate_player_l_to_r(t_player *player, double step,  char** map)
 
     new_pos_x = player->pos_x + (player->plane_x * step);
     new_pos_y = player->pos_y + (player->plane_y * step);
- 	hit_x = player->pos_x + (player->plane_x * step * 2);
-	hit_y = player->pos_y + (player->plane_y * step * 2);
+ 	hit_x = player->pos_x + (player->plane_x * step * 5);
+	hit_y = player->pos_y + (player->plane_y * step * 5);
 	if (map[(int)hit_y][(int)hit_x] == '1')
 		return ;
     player->pos_x = new_pos_x;

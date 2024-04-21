@@ -6,7 +6,7 @@
 /*   By: aranger <aranger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 13:43:06 by aranger           #+#    #+#             */
-/*   Updated: 2024/04/20 19:06:30 by aranger          ###   ########.fr       */
+/*   Updated: 2024/04/21 13:27:12 by aranger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ t_player	*init_new_players(t_param_type direction, double x, double y)
 	else if (direction == PARAM_SO)
 		new_player = set_orientation(0, 1, -0.66, 0);
 	else if (direction == PARAM_WE)
-		new_player = set_orientation(-1, 0, 0, 0.66);
+		new_player = set_orientation(-1, 0, 0, -0.66);
 	else if (direction == PARAM_EA)
-		new_player = set_orientation(1, 0, 0, -0.66);
+		new_player = set_orientation(1, 0, 0, 0.66);
 	if (new_player != NULL)
 	{
 		new_player->pos_x = x;

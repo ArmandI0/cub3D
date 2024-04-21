@@ -6,7 +6,7 @@
 /*   By: aranger <aranger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 13:40:47 by aranger           #+#    #+#             */
-/*   Updated: 2024/04/20 19:04:21 by aranger          ###   ########.fr       */
+/*   Updated: 2024/04/21 14:34:19 by aranger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@
 # define MINIMAP_SIZE 135
 # define MINIMAP_SQR_SIZE 15
 # define MINIMAP_SQR_NB 9
+/* game settings */
+# define SPEED 0.1
+# define SENSIVITY 3
 # define EAST_WEST 0
 # define NORTH_SOUTH 1
 
@@ -37,8 +40,6 @@ typedef struct s_player
 	double	dir_y;
 	double	plane_x;
 	double	plane_y;
-	//int		w_map;
-//	int		h_map;
 }			t_player;
 
 typedef struct s_window_settings

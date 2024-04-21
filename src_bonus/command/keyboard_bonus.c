@@ -1,7 +1,6 @@
 
 #include "../../includes/cub3D_bonus.h"
 
-
 /* if tr = FASLSE translate forward else translate R or L*/
 
 void	rotation(t_params *p, double step)
@@ -30,17 +29,17 @@ static void	translation_key(mlx_key_data_t	keydata, void *param)
 
 	p = param;
 	if (keydata.key == MLX_KEY_W && (keydata.action == MLX_REPEAT || keydata.action == MLX_PRESS))
-		translation(p, 0.1, FALSE);
+		translation(p, SPEED, FALSE);
 	if (keydata.key == MLX_KEY_S && (keydata.action == MLX_REPEAT || keydata.action == MLX_PRESS))
-		translation(p, -0.1, FALSE);
+		translation(p, -SPEED, FALSE);
 	if (keydata.key == MLX_KEY_D && (keydata.action == MLX_REPEAT || keydata.action == MLX_PRESS))
-		translation(p, 0.1, TRUE);
+		translation(p, SPEED, TRUE);
 	if (keydata.key == MLX_KEY_A && (keydata.action == MLX_REPEAT || keydata.action == MLX_PRESS))
-		translation(p, -0.1, TRUE);
-	if (keydata.key == MLX_KEY_RIGHT && keydata.action == MLX_REPEAT)
-		rotation(p, -5);
-	if (keydata.key == MLX_KEY_LEFT && keydata.action == MLX_REPEAT)
-		rotation(p, 5);
+		translation(p, -SPEED, TRUE);
+	if (keydata.key == MLX_KEY_RIGHT && (keydata.action == MLX_REPEAT || keydata.action == MLX_PRESS))
+		rotation(p, SENSIVITY);
+	if (keydata.key == MLX_KEY_LEFT && (keydata.action == MLX_REPEAT || keydata.action == MLX_PRESS))
+		rotation(p, -SENSIVITY);
 }
 
 
