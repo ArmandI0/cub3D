@@ -6,7 +6,7 @@
 /*   By: aranger <aranger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 13:40:47 by aranger           #+#    #+#             */
-/*   Updated: 2024/04/19 16:17:38 by aranger          ###   ########.fr       */
+/*   Updated: 2024/04/21 14:34:19 by aranger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,13 @@
 # include <stdio.h>
 # define WIDTH 1024
 # define HEIGHT 720
+/* minimap settings*/
+# define MINIMAP_SIZE 135
+# define MINIMAP_SQR_SIZE 15
+# define MINIMAP_SQR_NB 9
+/* game settings */
+# define SPEED 0.1
+# define SENSIVITY 3
 # define EAST_WEST 0
 # define NORTH_SOUTH 1
 
@@ -33,8 +40,6 @@ typedef struct s_player
 	double	dir_y;
 	double	plane_x;
 	double	plane_y;
-	//int		w_map;
-//	int		h_map;
 }			t_player;
 
 typedef struct s_window_settings
@@ -164,7 +169,6 @@ void		close_fct(void *param);
 t_map *		init_argument(void); // init the data structure
 void 		display_minimap(t_params *p);
 void		ft_error(t_window_settings *set);
-void		display_square(int start_x, int start_y, int size, mlx_image_t *img, uint32_t color, t_bool border);
 void		print_player(t_params *p);
 t_player	*init_new_players(t_param_type direction, double x, double y);
 void		display_hands(t_params *game);

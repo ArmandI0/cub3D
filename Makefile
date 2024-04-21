@@ -6,7 +6,7 @@
 #    By: aranger <aranger@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/31 17:54:43 by nledent           #+#    #+#              #
-#    Updated: 2024/04/19 16:20:05 by aranger          ###   ########.fr        #
+#    Updated: 2024/04/20 13:36:17 by aranger          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,7 +82,6 @@ SRCS_BONUS		=	\
 					map_parsing/parsing_bonus.c \
 					map_parsing/rgb_to_int_bonus.c \
 					print_map/draw_minimap_bonus.c \
-					print_map/minimap_player_bonus.c \
 					raycasting/draw_ver_line_bonus.c \
 					raycasting/init_player_bonus.c \
 					raycasting/raycasting_bonus.c \

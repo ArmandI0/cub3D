@@ -6,7 +6,7 @@
 /*   By: aranger <aranger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 21:49:25 by aranger           #+#    #+#             */
-/*   Updated: 2024/04/19 16:19:06 by aranger          ###   ########.fr       */
+/*   Updated: 2024/04/21 15:50:52 by aranger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int	find_wall(t_params *game, t_var_raycasting *var)
 
 void	set_start_and_end(t_var_raycasting *var, int h_line)
 {
-	var->start = -h_line / 2 + HEIGHT / 2 ;//- 150; //pourquoi 150 ???? pour les faire plus hauts
+	var->start = -h_line / 2 + HEIGHT / 2 ;
 	if (var->start < 0)
 		var->start = 0;
 	var->end = h_line / 2 + HEIGHT / 2;
@@ -96,8 +96,11 @@ t_bool  raycasting(t_params *game, t_window_settings *set, t_player *p)
 	int		h_line;
 	t_var_raycasting var;
 	double	dist_buffer[WIDTH];
+	mlx_image_t	*img;
 
 	i = 0;
+	img = set->img;
+	set->img = mlx_new_image(set->window, WIDTH, HEIGHT);
 	while (i < WIDTH)
 	{
 		set_var(&var, p, i);
@@ -113,6 +116,7 @@ t_bool  raycasting(t_params *game, t_window_settings *set, t_player *p)
 		i++;
 	}
 	draw_sprites(dist_buffer, game->sprites, game->player);
+	mlx_delete_image(set->window, img);
 	mlx_image_to_window(set->window, set->img, 0, 0);
 	return (TRUE);
 }
