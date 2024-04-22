@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   utils_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aranger <aranger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 17:56:50 by nledent           #+#    #+#             */
-/*   Updated: 2024/04/09 14:23:46 by aranger          ###   ########.fr       */
+/*   Updated: 2024/04/19 16:19:08 by aranger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D_bonus.h"
+
 
 static t_bool	check_identifier_name_only(char *identifier_in_str, int len_identifier)
 {
@@ -46,15 +47,4 @@ t_list	*get_line_with_str(t_list *head, char *identifier)
 		}
 	}
 	return (NULL);
-}
-
-u_int64_t	time_to_ms(void)
-{
-	u_int64_t		time_ms;
-	struct timeval	now;
-
-	gettimeofday(&now, NULL);
-	time_ms = (now.tv_sec * 1000);
-	time_ms += (now.tv_usec / 1000);
-	return (time_ms);
 }

@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_walls.c                                      :+:      :+:    :+:   */
+/*   check_walls_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nledent <nledent@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aranger <aranger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 17:55:29 by nledent           #+#    #+#             */
-/*   Updated: 2024/04/19 18:35:58 by nledent          ###   ########.fr       */
+/*   Updated: 2024/04/21 16:26:27 by aranger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3D_bonus.h"
+
 
 static t_bool	check_all_wall_around(char **map, int i, int j)
 {
@@ -41,7 +42,7 @@ static t_bool	check_if_missing_wall(char **map)
 		j = 0;
 		while (map[i][j] != 0)
 		{
-			if (ft_strchr("X0NSEW", map[i][j]) != 0)
+			if (ft_strchr("0NSEWCO", map[i][j]) != 0)
 			{
 				if (check_all_wall_around(map, i, j) == FALSE)
 					return (TRUE);

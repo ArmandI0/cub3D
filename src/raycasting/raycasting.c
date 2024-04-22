@@ -94,6 +94,7 @@ t_bool  raycasting(t_params *game, t_window_settings *set, t_player *p)
 	int 	side;
 	int		h_line;
 	t_var_raycasting var;
+	double	dist_buffer[WIDTH];
 
 	i = 0;
 	while (i < WIDTH)
@@ -106,9 +107,11 @@ t_bool  raycasting(t_params *game, t_window_settings *set, t_player *p)
 			var.perp_dist = (var.side_dist_y - var.dt_y);
 		h_line = (int)(HEIGHT / var.perp_dist);
 		set_start_and_end(&var, h_line);
+		dist_buffer[i] = var.perp_dist;
 		draw_ver_line(game, &var, i, side);
 		i++;
 	}
+	draw_sprites(dist_buffer, game->sprites, game->player);
 	mlx_image_to_window(set->window, set->img, 0, 0);
 	return (TRUE);
 }

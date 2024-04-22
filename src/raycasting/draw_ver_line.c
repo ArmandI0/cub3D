@@ -45,25 +45,6 @@ static int	get_x_on_texture(t_var_raycasting *var, uint32_t width, int side, t_p
 	return (x_txt);
 }
 
-static t_bool	load_textures(t_params *game)
-{
-	game->texture[PARAM_NO] = mlx_load_png(game->path_texture[PARAM_NO]);
-	game->texture[PARAM_SO] = mlx_load_png(game->path_texture[PARAM_SO]);
-	game->texture[PARAM_EA] = mlx_load_png(game->path_texture[PARAM_EA]);
-	game->texture[PARAM_WE] = mlx_load_png(game->path_texture[PARAM_WE]);
-	if (!game->texture[PARAM_NO] || !game->texture[PARAM_EA]
-		|| !game->texture[PARAM_SO] || !game->texture[PARAM_WE])
-		return (FALSE);
-	return (TRUE);
-}
-
-t_bool	load_images(t_params *game)
-{
-	if (load_textures(game) == FALSE)
-		return (FALSE);
-	return (TRUE);
-}
-
 void	draw_ver_line(t_params *game, t_var_raycasting *var, int x_position,  int side)
 {
 	int				color;
