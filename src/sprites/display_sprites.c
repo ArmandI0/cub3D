@@ -6,29 +6,24 @@
 /*   By: nledent <nledent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 13:26:12 by aranger           #+#    #+#             */
-/*   Updated: 2024/04/21 16:41:28 by nledent          ###   ########.fr       */
+/*   Updated: 2024/04/19 16:04:34 by nledent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3D_bonus.h"
+#include "../../includes/cub3D.h"
 
-void	remove_sprite_collision(t_player *p, t_sprites sprites, t_params *game)
+void	draw_sprites(double	dist_buffer[WIDTH], t_sprites sprites, t_player *p)
 {
-	int	i;
-
+	(void)dist_buffer;
+	(void)sprites;
+	(void)p;
+/* 	int	i;
+	
 	i = 0;
 	while (i < sprites.nb_sprites)
 	{
-		if (sprites.pos_x[i] == (int)(p->pos_x)
-			&& sprites.pos_y[i] == (int)(p->pos_y))
-		{
-			sprites.pos_x[i] = -1;
-			sprites.pos_y[i] = -1;
-			game->times.spagh_eaten[i] = time_to_ms() + 3000;
-			(game->sprites.nb_remaining)--;
-			if (game->sprites.nb_remaining == 0)
-				display_success(game->win->window, game);
-		}
+		spriteOrder[i] = i;
+		sprite_dist[i] = ((p->pos_x - sprite[i].x) * (p->pos_x - sprite[i].x) + (p->pos_y - sprite[i].y) * (p->pos_y - sprite[i].y));
 		i++;
-	}
+	} */
 }

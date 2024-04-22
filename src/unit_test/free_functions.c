@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_functions_bonus.c                             :+:      :+:    :+:   */
+/*   free_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aranger <aranger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 17:56:50 by nledent           #+#    #+#             */
-/*   Updated: 2024/04/19 16:19:07 by aranger          ###   ########.fr       */
+/*   Updated: 2024/04/15 12:08:15 by aranger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3D_bonus.h"
-
+#include "../../includes/cub3D.h"
 
 void	free_el_list(t_list *element)
 {
@@ -57,13 +56,9 @@ void	free_path_textures(t_params *game)
 
 void	free_game(t_params *game)
 {
-	free_img_anim(game);
-	free_img_sprites(game);
-	free_textures(game);
 	if (game->win != NULL)
 	{
-		if (game->win->window != NULL)
-			mlx_terminate(game->win->window);
+		mlx_terminate(game->win->window);
 		free(game->win);
 	}
 	free_lines_list(game->head_list_lines);
@@ -76,16 +71,4 @@ void	free_game(t_params *game)
 	if (game->player != NULL)
 		free(game->player);
 	free(game);
-}
-
-void	free_textures(t_params *game)
-{
-	if (game->texture[0] != NULL)
-		mlx_delete_texture(game->texture[0]);
-	if (game->texture[1] != NULL)
-		mlx_delete_texture(game->texture[1]);
-	if (game->texture[2] != NULL)
-		mlx_delete_texture(game->texture[2]);
-	if (game->texture[3] != NULL)
-		mlx_delete_texture(game->texture[3]);
 }

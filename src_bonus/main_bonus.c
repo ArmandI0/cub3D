@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nledent <nledent@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aranger <aranger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 13:26:12 by aranger           #+#    #+#             */
-/*   Updated: 2024/04/21 17:05:01 by nledent          ###   ########.fr       */
+/*   Updated: 2024/04/19 16:19:20 by aranger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,13 +129,9 @@ int	main(int argc, const char **argv)
 	game = init_game(argv);
 	if (load_images(game) == FALSE)
 		exit_fct(game);
-	init_times_displays(game);
-	if (raycasting(game, game->win, game->player) == FALSE)
-		exit_fct(game);
-	printf("red %d\n", convert_color(rgb_to_int(255,0 , 0)));
-	display_minimap(game);
+	raycasting(game, game->win, game->player);
 	display_hands(game);
-	display_welcome(game->win->window, game);
+	display_minimap(game);
 	init_command(game);
 	mlx_loop(game->win->window);
 	mlx_resize_hook(game->win->window, &resize_mlx, game->win);
